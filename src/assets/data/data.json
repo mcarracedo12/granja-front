@@ -1,0 +1,156 @@
+[
+    {
+        "id": 1,
+        "dineroEnCaja": 300000,
+        "ultimaActualizacion": "2023-12-12",
+        "tiposAnimales": [
+            {
+                "id": 1,
+                "animal": "HUEVO",
+                "diasExpiracion": 21,
+                "cantidadMaxima": 10000,
+                "tiempoDeReproduccion": 21,
+                "precioCompra": 10,
+                "precioVenta": 20,
+                "imagen": "../assets/huevo.jpg",
+                "animales": [
+                    {
+                        "id": 1,
+                        "fechaIngresoAGranja": "2023-02-02",
+                        "edadEnDiasAlIngresar": 5,
+                        "nacimiento": "2023-01-28",
+                        "fechaExpiracion": "2023-02-18",
+                        "precioCompra": 0,
+                        "precioVenta": 0,
+                        "tiempoDeReproduccionByTipo": 21,
+                        "precioCompraByTipo": 10,
+                        "precioVentaByTipo": 20,
+                        "diasExpiracionByTipo": 21,
+                        "cantidadMaximaByTipo": 10000,
+                        "animalByTipo": "HUEVO"
+                    },
+                    {
+                        "id": 2,
+                        "fechaIngresoAGranja": "2023-01-01",
+                        "edadEnDiasAlIngresar": 5,
+                        "nacimiento": "2022-12-27",
+                        "fechaExpiracion": "2023-01-17",
+                        "precioCompra": 0,
+                        "precioVenta": 0,
+                        "tiempoDeReproduccionByTipo": 21,
+                        "precioCompraByTipo": 10,
+                        "precioVentaByTipo": 20,
+                        "diasExpiracionByTipo": 21,
+                        "cantidadMaximaByTipo": 10000,
+                        "animalByTipo": "HUEVO"
+                    }
+                ]
+            },
+            {
+                "id": 2,
+                "animal": "POLLO",
+                "diasExpiracion": 1000,
+                "cantidadMaxima": 10000,
+                "tiempoDeReproduccion": 1,
+                "precioCompra": 200,
+                "precioVenta": 5000,
+                "imagen": "../assets/pollito.jpg",
+                "animales": [
+                    {
+                        "id": 3,
+                        "fechaIngresoAGranja": "2023-01-01",
+                        "edadEnDiasAlIngresar": 5,
+                        "nacimiento": "2022-12-27",
+                        "fechaExpiracion": "2025-09-22",
+                        "precioCompra": 0,
+                        "precioVenta": 0,
+                        "tiempoDeReproduccionByTipo": 1,
+                        "precioCompraByTipo": 200,
+                        "precioVentaByTipo": 5000,
+                        "diasExpiracionByTipo": 1000,
+                        "cantidadMaximaByTipo": 10000,
+                        "animalByTipo": "POLLO"
+                    }
+                ]
+            },
+            {
+                "id": 3,
+                "animal": "CHANCHO",
+                "diasExpiracion": 1300,
+                "cantidadMaxima": 1000,
+                "tiempoDeReproduccion": 20,
+                "precioCompra": 1500,
+                "precioVenta": 50000,
+                "imagen": "../assets/chancho.jpg",
+                "animales": []
+            },
+            {
+                "id": 4,
+                "animal": "VACA",
+                "diasExpiracion": 1000,
+                "cantidadMaxima": 100,
+                "tiempoDeReproduccion": 27,
+                "precioCompra": 2000,
+                "precioVenta": 80000,
+                "imagen": "../assets/vaca.jpg",
+                "animales": []
+            }
+        ],
+        "animales": [
+            {
+                "id": 1,
+                "fechaIngresoAGranja": "2023-02-02",
+                "edadEnDiasAlIngresar": 5,
+                "nacimiento": "2023-01-28",
+                "fechaExpiracion": "2023-02-18",
+                "precioCompra": 0,
+                "precioVenta": 0,
+                "tiempoDeReproduccionByTipo": 21,
+                "precioCompraByTipo": 10,
+                "precioVentaByTipo": 20,
+                "diasExpiracionByTipo": 21,
+                "cantidadMaximaByTipo": 10000,
+                "animalByTipo": "HUEVO"
+            },
+            {
+                "id": 2,
+                "fechaIngresoAGranja": "2023-01-01",
+                "edadEnDiasAlIngresar": 5,
+                "nacimiento": "2022-12-27",
+                "fechaExpiracion": "2023-01-17",
+                "precioCompra": 0,
+                "precioVenta": 0,
+                "tiempoDeReproduccionByTipo": 21,
+                "precioCompraByTipo": 10,
+                "precioVentaByTipo": 20,
+                "diasExpiracionByTipo": 21,
+                "cantidadMaximaByTipo": 10000,
+                "animalByTipo": "HUEVO"
+            },
+            {
+                "id": 3,
+                "fechaIngresoAGranja": "2023-01-01",
+                "edadEnDiasAlIngresar": 5,
+                "nacimiento": "2022-12-27",
+                "fechaExpiracion": "2025-09-22",
+                "precioCompra": 0,
+                "precioVenta": 0,
+                "tiempoDeReproduccionByTipo": 1,
+                "precioCompraByTipo": 200,
+                "precioVentaByTipo": 5000,
+                "diasExpiracionByTipo": 1000,
+                "cantidadMaximaByTipo": 10000,
+                "animalByTipo": "POLLO"
+            }
+        ],
+        "compras": [
+            {
+                "id": 1,
+                "nombrePersona": "Marina",
+                "fecha": "2023-02-02",
+                "productos": []
+            }
+        ],
+        "ventas": []
+    }
+]
