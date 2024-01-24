@@ -1,26 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-
+import { HeaderComponent } from './components/header/header.component';
+import{TiposComponent} from './components/tipos/tipos.component';
+import { AnimalesComponent } from './components/animales/animales.component';
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, HeaderComponent, TiposComponent, AnimalesComponent],
   templateUrl: './app.component.html',
   styleUrl: '../styles.css'
+  
 })
-export class AppComponent{
-    title = 'granja';
-    // miGranja: any;
-
-    // constructor(private datosMiGranja: miGranjaService){}
-
-    // ngOnInit(): void {
-    //   this.datosMiGranja.obtenerDatos().subscribe(data  => {
-    //     console.log(data);
-    //   this.datosMiGranja=data;
-    // });
-    // }
+export class AppComponent {
+  title = 'Trabajo-Final';
 }
 

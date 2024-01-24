@@ -1,0 +1,17 @@
+@for (item of [
+{ nombre: '1', edad: '7' },
+{ nombre: '2', edad: '10' },
+{ nombre: '3', edad: '15' },
+{ nombre: '4', edad: '20' }
+]; track item.nombre) {
+<div class="pill">
+
+
+
+<a [href]="item.nombre" target="_blank" rel="noopener">
+    <span>Id: {{ item.nombre }}. Días: {{ item.edad }} </span>
+
+</a>
+
+</div>
+}

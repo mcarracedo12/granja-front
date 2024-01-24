@@ -1,10 +1,7 @@
 <main class="main">
   <div class="content">
-    <div class="left-side">
-      <h1>Hello, {{ title }}</h1>
-      <h1>LA GRANJA!!</h1>
-      <p>Congratulations! Your app is running. 🎉</p>
-    </div>
+
+    <app-header></app-header>
 
     <div class="divider" role="separator" aria-label="Divider">
 
@@ -13,44 +10,18 @@
     <div class="right-side">
 
 
+
       <div class="pill-group">
         <!-- aca Meto el for para cada tipo de animal -->
-        @for (item1 of [
-        { tipo: 'pollo', cantidad: '5' , fuente: '../assets/pollito.jpg'},
-        { tipo: 'chancho', cantidad: '10', fuente: '../assets/chancho.jpg' },
-        { tipo: 'huevo', cantidad: '15', fuente: '../assets/huevo.jpg' },
-        { tipo: 'vaca', cantidad: '20', fuente: '../assets/vaca.jpg' }
-        ]; track item1.tipo) {
-        <a [href]="item1.cantidad" target="_blank" rel="noopener">
-          <span>{{ item1.tipo }} {{ item1.cantidad }} </span>
-          <svg xmlns="http://www.w3.org/2000/svg" height="14" viewBox="0 -960 960 960" width="14" fill="currentColor">
-            <path
-              d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h560v-280h80v280q0 33-23.5 56.5T760-120H200Zm188-212-56-56 372-372H560v-80h280v280h-80v-144L388-332Z" />
-          </svg>
-        </a>
 
-        <div class="pill">
-          <!-- aca Meto el for para cada uno de los animales -->
-          @for (item of [
-          { nombre: '1', edad: '5' },
-          { nombre: '2', edad: '10' },
-          { nombre: '3', edad: '15' },
-          { nombre: '4', edad: '20' }
-          ]; track item.nombre) {
-          <div class="pill">
-            <a [href]="item.nombre" target="_blank" rel="noopener">
-              <span>{{ item.nombre }} {{ item.edad }} </span>
-              <img width="30" height="30" viewBox="0 0 30 30" fill="none" src="{{item1.fuente}}" alt={{item.nombre}} />
-            </a>
-          </div>
-          }
-        </div>
-        <div class="pill-group">
-          <div class="pill">Comprar</div>
-          <div class="pill">Vender</div>
-        </div>
-        }
+        <app-tipos></app-tipos>
+
       </div>
+
+
+
+
+
 
       <div class="social-links">
         <a href="https://github.com/mcarracedo12/Granja-en-Java" aria-label="Github" target="_blank" rel="noopener">
