@@ -1,0 +1,37 @@
+<div class="pill-group">
+    <div class="pill-form">
+        <div class="pill">
+            INGRESAR UN NUEVO ANIMAL A LA GRANJA:
+        </div>
+        <div class="pill">
+            Nombre del animal
+        </div>
+        <div class="pill">
+            Cantidad maxima en granja
+        </div>
+        <div class="pill">
+            Expectativa de vida expresados en dias
+        </div>
+        <div class="pill">
+            Cada cuantos dias se reproduce?
+        </div>
+        <div class="pill">
+            Precio de Compra
+        </div>
+        <div class="pill">
+            Precio de venta
+        </div>
+        <div class="pill">
+            Link al dibujo que lo representa
+        </div>
+
+    </div>
+    <app-button text="Agregar" (btnClick)="postTipoAnimal()"></app-button>
+</div>
+
+<div class="content">
+    </div>
+<div class="content">
+<app-button text="Comprar" (btnClick)="displayFormComprar()"></app-button>
+<app-button text="Vender" (btnClick)="displayFormVender()"></app-button>
+</div>

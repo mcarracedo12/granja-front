@@ -1,5 +1,5 @@
 import { tipo } from "./tipo"
-export const GRANJA: tipo[] = 
+export const TIPOS: tipo[] = 
 [
     {
         "id": 1,

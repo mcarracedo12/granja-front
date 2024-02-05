@@ -1,4 +1,9 @@
-<div class="left-side">
-    <h1>{{title}}</h1>
-    <p>Congratulations! Your app is running. 🎉</p>
+<main>{{title}}🎉</main>
+<div class="pill-group">
+    <div class="content">
+        <p> Dinero en la caja actual:
+            {{caja}}
+        </p>
+          <app-button text="Actualizar Granja" (btnClick)="actualizarGranja()"></app-button>
+    </div>
 </div>

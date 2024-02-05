@@ -53,6 +53,7 @@
   }
 
   main {
+    font-size: 3.125rem; /*Agregue yo aca*/ 
     width: 100%;
     min-height: 100%;
     display: flex;
@@ -61,10 +62,6 @@
     padding: 1rem;
     box-sizing: inherit;
     position: relative;
-  }
-
-  .angular-logo {
-    max-width: 9.2rem;
   }
 
   .content {
@@ -92,9 +89,15 @@
   .pill-group {
     display: flex;
     flex-direction: column;
-    align-items: start;
+    align-items: center;
     flex-wrap: wrap;
     gap: 1.25rem;
+  }
+
+  .pill-form{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
   }
 
   .pill {
@@ -151,6 +154,39 @@
 
   .social-links a:hover svg path {
     fill: var(--gray-900);
+  }
+
+  /* .btn{
+    display: inline-block;
+    /* background: #000; 
+    color: currentColor;
+    /* color: #fff; 
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 15px;
+    font-family: inherit;
+  } */
+
+  .btn:focus{
+    outline: none;
+  }
+
+  .btn:active{
+    transform: scale(0.98);
+  }
+
+  .btn:hover{
+    color: currentColor;
+    transform: scale(0.98);
+  }
+
+  .btn-block{
+    display: block;
+    width: 100%;
   }
 
   @media screen and (max-width: 650px) {
