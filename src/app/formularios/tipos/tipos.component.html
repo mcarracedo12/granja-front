@@ -1,37 +1,39 @@
+<div class="pill">
 <div class="pill-group">
     <div class="pill-form">
         <div class="pill">
             INGRESAR UN NUEVO ANIMAL A LA GRANJA:
         </div>
         <div class="pill">
-            Nombre del animal
+            <label for="nombre" class="pill">Nombre del animal</label>
+            <input type="nombre" class="text" id="inputNombre">
         </div>
         <div class="pill">
-            Cantidad maxima en granja
+            <label for="cantidad" class="pill">Cantidad maxima en granja</label>
+            <input type="cantidad" class="text" id="inputCantidad">
         </div>
         <div class="pill">
-            Expectativa de vida expresados en dias
+            <label for="expectativa" class="pill">Expectativa de vida expresados en dias</label>
+            <input type="expectativa" class="text" id="inputExpectativa">
         </div>
         <div class="pill">
-            Cada cuantos dias se reproduce?
+            <label for="reproduccion" class="pill">Cada cuantos dias se reproduce?</label>
+            <input type="reproduccion" class="text" id="inputDiasReproduccion">
         </div>
         <div class="pill">
-            Precio de Compra
+            <label for="precioCompra" class="pill">Precio de Compra</label>
+            <input type="precioCompra" class="text" id="inputPrecioCompra">
         </div>
         <div class="pill">
-            Precio de venta
+            <label for="precioVenta" class="pill">Precio de Venta</label>
+            <input type="precioVenta" class="text" id="inputPrecioVenta">
         </div>
         <div class="pill">
-            Link al dibujo que lo representa
+            <label for="imagen" class="pill">Link al dibujo que lo representa</label>
+            <input type="imagen" class="text" id="inputImagen">
         </div>
-
     </div>
     <app-button text="Agregar" (btnClick)="postTipoAnimal()"></app-button>
 </div>
 
-<div class="content">
-    </div>
-<div class="content">
-<app-button text="Comprar" (btnClick)="displayFormComprar()"></app-button>
-<app-button text="Vender" (btnClick)="displayFormVender()"></app-button>
 </div>

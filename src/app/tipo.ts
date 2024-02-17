@@ -1,6 +1,6 @@
 export interface tipo
 {
-    id: number,
+    id?: number,
     animal: string,
     diasExpiracion: number,
     cantidadMaxima: number,

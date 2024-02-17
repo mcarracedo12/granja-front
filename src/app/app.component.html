@@ -10,9 +10,17 @@
       
     
       <app-tiposF></app-tiposF>
+
+      <div class="content">
+        <div class="pill">
+        <app-button text="Comprar" (btnClick)="displayFormComprar()"></app-button>
+        <app-button text="Vender" (btnClick)="displayFormVender()"></app-button>
+      </div>
+    </div>
     
-
-
+      <app-comprar></app-comprar>
+      <app-vender></app-vender>
+    
     </div>
 
     
@@ -21,13 +29,14 @@
 
     </div>
 
+   
 
     <div class="right-side">
 
 
 
       <div class="pill-group">
-        <!-- aca Meto el for para cada tipo de animal -->
+        <!-- aca Meto el for para cada tipo de animal *ngFor="let tipo of tipos" -->
 
         <app-tipos></app-tipos>
 

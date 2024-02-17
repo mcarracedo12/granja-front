@@ -19,6 +19,11 @@ export class HeaderComponent implements OnInit {
   }
 
   actualizarGranja(){
-    alert("Actualizar");
+    alert("ActualizarGranja");
   }
+
+  actualizarPrecios(){
+    alert("ActualizarPrecios");
+  }
+
 }
