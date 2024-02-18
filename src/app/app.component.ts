@@ -9,6 +9,7 @@ import { ComprarComponent } from './formularios/comprar/comprar.component';
 import { VenderComponent } from './formularios/vender/vender.component';
 
 
+
 @Component({
   selector: 'app-root',
   standalone: true,
