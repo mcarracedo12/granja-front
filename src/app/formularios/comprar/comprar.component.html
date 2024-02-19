@@ -4,16 +4,18 @@
         <div class="pill">
             INGRESAR INFORMACION DE COMPRA:
         </div>
+        <form [formGroup]= "comprarForm" (submit) = "comprar()"> 
         <div class="pill">
             <label for="tipoCompra" class="pill">Tipo de animal</label>
-            <input type="tipoCompra" class="text" id="inputTipoCompra">
+            <input type="tipoCompra" class="text" formControlName="inputTipoCompra">
         </div>
         <div class="pill">
             <label for="cantidadCompra" class="pill">Cantidad que quiere comprar</label>
-            <input type="cantidadCompra" class="text" id="inputCantidadCompra">
+            <input type="cantidadCompra" class="text" formControlName="inputCantidadCompra">
         </div>
-        
+        <button class= "pill" type="submit">Comprar</button> 
+        </form>
     </div>
-  <app-button text="Comprar" (btnClick)="comprar()"></app-button>
+  <!-- <app-button text="Comprar" (btnClick)="comprar()"></app-button> -->
 </div>
 </div>

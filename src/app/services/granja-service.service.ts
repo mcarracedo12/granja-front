@@ -7,14 +7,23 @@ import { HttpClient } from '@angular/common/http';
 })
 export class GranjaServiceService {
 
-  constructor(private http: HttpClient) { }
-
+  //constructor(private http: HttpClient) { }
+  constructor() { }
+/*
   obtenerDatos(): Observable<any>{
     return this.http.get('./assets/data/data.json');
-  }
+  }*/
 
   postTipoAnimal(nombre : string, cantidad : number, expectativa: number, reproduccion: number, precioCompra: number, precioVenta: number, imagen: String){
     console.log(nombre); 
+    //this.http.post('')
   }
 
+  postCompra(inputTipoCompra: string, inputCantidadCompra: number){
+    console.log(inputTipoCompra);
+  }
+
+  postVenta(inputTipoVenta: string, inputCantidadVenta: number){
+    console.log(inputTipoVenta);
+  }
 }

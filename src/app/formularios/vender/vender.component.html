@@ -1,19 +1,21 @@
 <div class="pill">
-<div class="pill-group">
-    <div class="pill-form">
-        <div class="pill">
-            INGRESAR INFORMACION DE VENTA:
+    <div class="pill-group">
+        <div class="pill-form">
+            <div class="pill">
+                INGRESAR INFORMACION DE VENTA:
+            </div>
+             <form [formGroup]= "venderForm" (submit) = "vender()">
+            <div class="pill">
+                <label for="tipoVenta" class="pill">Tipo de animal</label>
+                <input type="tipoVenta" class="text" formControlName="inputTipoVenta">
+            </div>
+            <div class="pill">
+                <label for="cantidadVenta" class="pill">Cantidad que quiere vender</label>
+                <input type="cantidadVenta" class="text" formControlName="inputCantidadVenta">
+            </div>
+            <button class= "pill" type="submit">Vender</button>
+            </form>
         </div>
-        <div class="pill">
-            <label for="tipoVenta" class="pill">Tipo de animal</label>
-            <input type="tipoVenta" class="text" id="inputTipoVenta">
-        </div>
-        <div class="pill">
-            <label for="cantidadVenta" class="pill">Cantidad que quiere vender</label>
-            <input type="cantidadVenta" class="text" id="inputCantidadVenta">
-        </div>
-        
+        <!--  <app-button text="Vender" (btnClick)="vender()"></app-button> -->
     </div>
-  <app-button text="Vender" (btnClick)="vender()"></app-button>
-</div>
 </div>
