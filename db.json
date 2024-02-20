@@ -1,6 +1,17 @@
 [
     {
+        "id": 0,
+        "nombre": "Comprador Generico",
+        "dineroEnCaja": 0,
+        "ultimaActualizacion": "1999-01-01",
+        "tiposAnimales": [], 
+        "animales":[],
+        "compras":[],
+        "ventas":[]
+    },
+    {
         "id": 1,
+        "nombre": "La Chacrita de Marina",
         "dineroEnCaja": 300000,
         "ultimaActualizacion": "2023-12-12",
         "tiposAnimales": [

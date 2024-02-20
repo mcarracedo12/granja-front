@@ -25,7 +25,7 @@ vender(){
     this.venderForm.value.inputTipoVenta ?? '',
     this.venderForm.value.inputCantidadVenta ?? 0
   );
- alert("Compra de Tipos Component");
+ alert("Venta de Tipos Component");
 }
 
 }

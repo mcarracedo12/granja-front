@@ -1,9 +1,10 @@
 import { animal } from "./animal";
 
-export interface compra
+
+export interface venta
 {
     id?: number,
     nombre: string,
-    productos: animal[],
+    productos: animal[]
     
 }
