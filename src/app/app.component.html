@@ -1,6 +1,12 @@
 
- 
+<!--  
+ <div class="content">
+  <p> Dinero en la caja actual:
+      {{data}}
+  </p>
+  </div> -->
 
+  <!-- // EMPIËZA ACA!! -->
     <app-header></app-header>
     <main class="main">
       
@@ -36,9 +42,11 @@
 
 
       <div class="pill-group">
-        <!-- aca Meto el for para cada tipo de animal *ngFor="let tipo of tipos" -->
+        <!-- aca Meto el for para cada tipo de animal *ngFor="let tipos of tipo" -->
 
         <app-tipos></app-tipos>
+        <!-- <app-tipos *ngFor="let tipos of tipo | async" [tipo]="tipo"  (deleteTipo)="borrarTipo($event)"></app-tipos> -->
+        <!-- <app-tipos *ngFor="let tipos of tipo | async"></app-tipos> -->
 
       </div>
 

@@ -4,6 +4,7 @@ import { AppComponent } from '../../app.component';
 import { ButtonComponent } from '../button/button.component';
 import { TIPOS } from '../../mock-granja';
 import { tipo } from '../../tipo';
+import { GranjaServiceService } from '../../services/granja-service.service';
 
 
 @Component({
@@ -14,18 +15,27 @@ import { tipo } from '../../tipo';
   // styleUrl: './tipos.component.css'
 })
 export class TiposComponent implements OnInit{
-  tipo: tipo[] = []
+  tipos: tipo[] = []
 
 
-  // constructor(private TaskService: TaskService) { }
+  constructor(private granjaService: GranjaServiceService) {  }
+
+
+   
+
 
 
 
   ngOnInit(): void {
-    //Like promisse
-    // this.TaskService.getTasks().subscribe(tasks => [
-      // this.tasks = tasks
-    // ]);
+
+   
+  }
+
+
+ 
+
+  agregarTipo(){
+    this.granjaService.postTipoAnimal('MArina', 3, 21, 21, 45, 54, 'http.. ');
   }
 
 
@@ -37,4 +47,6 @@ export class TiposComponent implements OnInit{
   modificarTipo(){
     alert("ModificarTipo");
   }
+
+
 }
