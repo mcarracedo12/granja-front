@@ -1,10 +1,11 @@
-<main>{{title}}🎉</main>
+<main>{{granja.nombre}}🎉</main>
 <div class="pill-group">
     <div class="content">
         <p> Dinero en la caja actual:
-            {{caja}}
+            {{granja.dineroEnCaja}}
         </p>
-          <app-button text="Actualizar Granja" (btnClick)="actualizarGranja()"></app-button>
-          <app-button text="Actualizar Precios" (btnClick)="actualizarPrecios()"></app-button>
+        <p>Ultima Actualizacion:
+            {{granja.ultimaActualizacion}}
+        </p>
     </div>
 </div>

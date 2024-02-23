@@ -1,55 +1,33 @@
+<app-header></app-header>
 
-<!--  
- <div class="content">
-  <p> Dinero en la caja actual:
-      {{data}}
-  </p>
-  </div> -->
+<div class="pill-group">
+  <div class="content">
+        <app-button text="Actualizar Granja" (btnClick)="actualizarGranja()"></app-button>
+        <app-button text="Actualizar Precios" (btnClick)="actualizarPrecios()"></app-button>
+      </div>
+    </div>
 
-  <!-- // EMPIËZA ACA!! -->
-    <app-header></app-header>
-    <main class="main">
-      
-    <div class="content">
-    
+<main class="main">
+  <div class="content">
     <div class="right-side">
-      
-    
       <app-tiposF></app-tiposF>
-
       <div class="content">
         <div class="pill">
-        <app-button text="Comprar" (btnClick)="displayFormComprar()"></app-button>
-        <app-button text="Vender" (btnClick)="displayFormVender()"></app-button>
+          <app-button text="Comprar" (btnClick)="displayFormComprar()"></app-button>
+          <app-button text="Vender" (btnClick)="displayFormVender()"></app-button>
+        </div>
       </div>
-    </div>
-    
       <app-comprar></app-comprar>
       <app-vender></app-vender>
-    
     </div>
-
-    
-
     <div class="divider" role="separator" aria-label="Divider">
-
     </div>
-
-   
 
     <div class="right-side">
-
-
-
       <div class="pill-group">
         <!-- aca Meto el for para cada tipo de animal *ngFor="let tipos of tipo" -->
-
-        <app-tipos></app-tipos>
-        <!-- <app-tipos *ngFor="let tipos of tipo | async" [tipo]="tipo"  (deleteTipo)="borrarTipo($event)"></app-tipos> -->
-        <!-- <app-tipos *ngFor="let tipos of tipo | async"></app-tipos> -->
-
+        <app-tipos [tipo]="tipo" *ngFor="let tipo of tipos"></app-tipos>
       </div>
-
       <div class="social-links">
         <a href="https://github.com/mcarracedo12/Granja-en-Java" aria-label="Github" target="_blank" rel="noopener">
           <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg" alt="Github">
@@ -58,9 +36,16 @@
           </svg>
         </a>
       </div>
-
     </div>
   </div>
 </main>
+
+
+<div class="pill-group">
+  <app-compras [compra]="compra" *ngFor="let compra of compras"></app-compras>
+</div>
+
+
+<app-ventas></app-ventas>
 
 <router-outlet />

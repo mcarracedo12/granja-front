@@ -151,17 +151,9 @@
                 "precioVentaByTipo": 5000,
                 "diasExpiracionByTipo": 1000,
                 "cantidadMaximaByTipo": 10000,
-                "animalByTipo": "POLLO"
+                "animalByTipo": "POLLITO"
             }
-        ],
-        "compras": [
-            {
-                "id": 1,
-                "nombrePersona": "Marina",
-                "fecha": "2023-02-02",
-                "productos": []
-            }
-        ],
-        "ventas": []
+        ]
+        
     }
 ]

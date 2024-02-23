@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, inject } from '@angular/core';
+import { Component, OnInit, Output, inject, Input } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './components/header/header.component';
 import { TiposComponent} from './components/tipos/tipos.component';
@@ -15,53 +15,65 @@ import { animal } from './animal';
 import { tipo } from './tipo';
 import { compra } from './compra';
 import { venta } from './venta';
+import { ComprasComponent } from './components/compras/compras.component';
+import { VentasComponent } from './components/ventas/ventas.component';
 
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, HeaderComponent, TiposComponent, AnimalesComponent, TiposForm, ButtonComponent, ComprarComponent, VenderComponent, HttpClientModule, CommonModule],
+  imports: [RouterOutlet, HeaderComponent, TiposComponent, AnimalesComponent, TiposForm, ButtonComponent, ComprarComponent, VenderComponent, HttpClientModule, CommonModule, ComprasComponent, VentasComponent],
   providers: [GranjaServiceService],
   templateUrl: './app.component.html',
   styleUrl: '../styles.css'
   
 })
 export class AppComponent {
-
+  @Input()tipos: tipo[] = [];
   data: any={};
-  tipos: any=[];
-  animales: any=[];
-  compras: any=[];
-  ventas: any=[];
+  granja: any;
+  animales: animal[]=[];
+  @Input()compras: compra[]=[];
+  @Input()ventas: venta[]=[];
   // granjaService: GranjaServiceService = inject(GranjaServiceService);
 
   constructor(private granjaService: GranjaServiceService){
     console.log("Inicio app Component");
 
-    granjaService.obtenerGranja(); // Me da un observable
+    // this.granja= granjaService.obtenerGranja(); // Me da un observable
 
-
-
-    this.data= this.granjaService.obtenerDatos();
-    console.log(this.data);
-    
-    this.tipos= this.granjaService.obtenerTipos();
+    this.granjaService.obtenerGranja().subscribe(data=>{
+    this.granja= data;
+    this.tipos= this.granja.tiposAnimales;
+    this.animales = this.granja.animales;
     console.log(this.tipos);
+  });
+    
+    
+  this.granjaService.obtenerCompras().subscribe(compras=>{
+    this.compras = compras;
+    for(let compra of compras){
+      console.log(compra.nombrePersona);
+    }
+    
+  });
 
-    this.animales= this.granjaService.obtenerAnimales();
-    console.log(this.animales);
+  this.granjaService.obtenerVentas().subscribe(ventas=>{
+    this.ventas = ventas
+  });
 
-    this.compras= this.granjaService.obtenerCompras();
-    console.log(this.compras);
-
-    this.ventas= this.granjaService.obtenerVentas();
-    console.log(this.ventas);
-
+   
 
   }
 
-  
+  actualizarGranja() {
+    alert("ActualizarGranja");
+  }
+
+  actualizarPrecios() {
+    alert("ActualizarPrecios");
+  }
 
   displayFormComprar(){
     alert("Comprar");

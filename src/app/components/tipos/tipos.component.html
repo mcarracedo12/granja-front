@@ -1,36 +1,31 @@
-@for (tipo of [
+<!-- @for (tipo of [
 { animal: 'pollo', cantidadMaxima: '5' , imagen: '../assets/pollito.jpg'},
 { animal: 'chancho', cantidadMaxima: '11', imagen: '../assets/chancho.jpg' },
 { animal: 'huevo', cantidadMaxima: '15', imagen: '../assets/huevo.jpg' },
 { animal: 'vaca', cantidadMaxima: '20', imagen: '../assets/vaca.jpg' }
 ]; track tipo.animal) {
-  
-    <div class="pill">
-<!-- <div class="pill" *ngFor="let tipos of tipo | async"> -->
-     
+  -->
+<div class="pill">
     <div class="pill-group">
-
-
         <img width="30" height="30" viewBox="0 0 30 30" fill="none" src={{tipo.imagen}} alt={{tipo.animal}} />
-
         <div class="pill">
-            <!-- <a [href]="item1.cantidad" target="_blank" rel="noopener"> -->
+            {{ tipo.animal }}
+            Cant.Max:
             {{ tipo.cantidadMaxima }}
             <!-- <svg xmlns="http://www.w3.org/2000/svg" height="14" viewBox="0 -960 960 960" width="14" fill="currentColor">
             <path
                 d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h560v-280h80v280q0 33-23.5 56.5T760-120H200Zm188-212-56-56 372-372H560v-80h280v280h-80v-144L388-332Z" />
         </svg> -->
-            <!-- </a> -->
         </div>
     </div>
     <!-- aca Meto el for para cada uno de los animales -->
     <div class="pill-group">
-    <app-animales></app-animales>
-        </div>
+        <app-animales></app-animales>
+    </div>
     <div class="pill-group">
         <app-button text="X" (btnClick)="eliminarTipo()"></app-button>
         <app-button text="==>" (btnClick)="modificarTipo()"></app-button>
     </div>
 </div>
 
-}
+<!-- } -->

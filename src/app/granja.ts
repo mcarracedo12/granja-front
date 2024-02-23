@@ -5,4 +5,8 @@ export interface granja
     dineroEnCaja: number,
     nombre: string,
     ultimaActualizacion: Date,
+    tiposAnimales: [],
+    animales: [],
+    compras: [],
+    ventas:[]
 }
