@@ -43,13 +43,13 @@ obtenerGranja(): Observable<granja> {
 
 
 
-  obtenerCompras(): Observable<any> {
-    const compras = this.http.get<any>(`${this.apiUrl}/compras`);
+  obtenerCompras(): Observable<compra[]> {
+    const compras = this.http.get<compra[]>(`${this.apiUrl}/granjas/1/compras`);
     return compras;
   }
 
   obtenerVentas(): Observable<venta[]> {
-    const ventas = this.http.get<venta[]>(`${this.apiUrl}/ventas`);
+    const ventas = this.http.get<venta[]>(`${this.apiUrl}/granjas/1/ventas`);
     return ventas;
   }
 

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { GranjaServiceService } from '../../services/granja-service.service';
 import { compra } from '../../compra';
 import { Input } from '@angular/core';
+import { animal } from '../../animal';
 
 @Component({
   selector: 'app-compras',
@@ -13,15 +14,17 @@ import { Input } from '@angular/core';
 })
 export class ComprasComponent implements OnInit {
   @Input()compra: any; 
+  productos:animal[]=[];
 
   constructor(private granjaService: GranjaServiceService){}
 
   
   ngOnInit(): void {
-    this.granjaService.obtenerCompras().subscribe(compra=>{ 
-      console.log(compra);
-  });
-
+    this.granjaService.obtenerCompras().subscribe(compras=>{});
+    console.log(this.compra);
+    this.productos = this.compra.productos;
+    console.log(this.productos);
+    
   }
 
 }

@@ -1,17 +1,16 @@
-@for (item of [
-{ nombre: '1', edad: '7' },
-{ nombre: '2', edad: '10' },
-{ nombre: '3', edad: '15' },
-{ nombre: '4', edad: '20' }
-]; track item.nombre) {
+@for (animal of [
+{ id: '1', edadActual: '7' },
+{ id: '2', edadActual: '10' },
+{ id: '3', edadActual: '15' },
+{ id: '4', edadActual: '20' }
+]; track animal.id) {
 <div class="pill">
-
-
-
     <!-- <a [href]="item.nombre" target="_blank" rel="noopener"> -->
-        <div>Id: {{ item.nombre }}. Días: {{ item.edad }} </div>
-
+        <div>Id: {{ animal.id }}. Días: {{ animal.edadActual }} </div>
     <!-- </a> -->
+
+    
+
 
 </div>
 }

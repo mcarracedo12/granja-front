@@ -2,7 +2,9 @@
 export interface animal
 {
     id?: number,
-    diasDeVida: number
+    edadActual: number, 
+    precioVentaByTipo: number,
+    precioCompraByTipo: number
     
     
 }
