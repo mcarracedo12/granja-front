@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { GranjaServiceService } from '../../services/granja-service.service';
 import { compra } from '../../compra';
 import { Input } from '@angular/core';
@@ -14,7 +14,8 @@ import { animal } from '../../animal';
 })
 export class ComprasComponent implements OnInit {
   @Input()compra: any; 
-  productos:animal[]=[];
+  @Output()animales:animal[]=[];
+  animal:any;
 
   constructor(private granjaService: GranjaServiceService){}
 
@@ -22,8 +23,8 @@ export class ComprasComponent implements OnInit {
   ngOnInit(): void {
     this.granjaService.obtenerCompras().subscribe(compras=>{});
     console.log(this.compra);
-    this.productos = this.compra.productos;
-    console.log(this.productos);
+    this.animales = this.compra.productos;
+    console.log(this.animales);
     
   }
 

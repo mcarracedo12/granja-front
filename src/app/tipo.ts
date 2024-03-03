@@ -1,3 +1,4 @@
+import { animal } from "./animal";
 export interface tipo
 {
     id?: number,
@@ -8,4 +9,5 @@ export interface tipo
     precioCompra: number,
     precioVenta: number,
     imagen: string,
+    animales: animal[],
 }

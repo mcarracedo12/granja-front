@@ -3,9 +3,17 @@
     {{ venta.nombrePersona }}
     {{ venta.fecha}}
 
-    <!-- <div [animal]="animal" *ngFor="let animal of productos">
-        animalito
-
-
-    </div> -->
-</div>
+   
+    @for (animal of [
+    { id: '1', edadActual: '7' },
+    { id: '2', edadActual: '10' },
+    { id: '3', edadActual: '15' },
+    { id: '4', edadActual: '20' }
+    ]; track animal.id) {
+    <!-- <app-animales [animal]="animal" *ngFor="let animal of animales" >sarasa</app-animales> -->
+    <div>
+    <p>sarasa</p>
+   
+    <!-- <app-animales [animal]="animal" *ngFor="let animal of animales">
+    </app-animales> -->
+</div> }

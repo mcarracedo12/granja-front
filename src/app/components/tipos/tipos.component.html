@@ -22,7 +22,8 @@
     </div>
     <!-- aca Meto el for para cada uno de los animales -->
     <div class="pill-group">
-        <app-animales></app-animales>
+        <!-- <app-animales></app-animales> -->
+        <app-animales [animal]="animal" *ngFor="let animal of animales" >sarasa</app-animales>
     </div>
     <div class="pill-group">
         <app-button text="X" (btnClick)="eliminarTipo()"></app-button>

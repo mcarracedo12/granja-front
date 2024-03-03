@@ -31,11 +31,13 @@ import { VentasComponent } from './components/ventas/ventas.component';
 })
 export class AppComponent {
   @Input()tipos: tipo[] = [];
+  @Output() tipo: any;
   data: any={};
   granja: any;
   animales: animal[]=[];
   @Input()compras: compra[]=[];
   @Input()ventas: venta[]=[];
+
   // granjaService: GranjaServiceService = inject(GranjaServiceService);
 
   constructor(private granjaService: GranjaServiceService){

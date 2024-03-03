@@ -40,7 +40,10 @@ obtenerGranja(): Observable<granja> {
   const data = this.http.get<granja>(`${this.apiUrl}/granja`);
   return data;
 }
-
+obtenerTipos(): Observable<tipo[]> {
+  const tipos = this.http.get<tipo[]>(`${this.apiUrl}/granjas/1/tipos`);
+  return tipos;
+}
 
 
   obtenerCompras(): Observable<compra[]> {
