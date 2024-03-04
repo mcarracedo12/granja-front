@@ -16,20 +16,20 @@ import { venta } from '../../venta';
 })
 export class VentasComponent implements OnInit {
   @Input() venta: any;
-  @Output()productos: animal[]=[];
-  producto: any;
+  @Output()animales: animal[]=[];
+  animal: any;
   
   constructor(private granjaService: GranjaServiceService) { }
 
   ngOnInit(): void {
     this.granjaService.obtenerVentas().subscribe(ventas => { });
     console.log(this.venta);
-    this.productos = this.venta.productos;
-    console.log(this.productos);
+    this.animales = this.venta.productos;
+    console.log(this.animales);
     // this.animal = this.animales[0];
-    for (let producto of this.productos) {
-      console.log(producto.id);
-      console.log(producto);
+    for (let animal of this.animales) {
+      console.log(animal.id);
+      console.log(animal);
     }
 
   }
