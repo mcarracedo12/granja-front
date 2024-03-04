@@ -17,10 +17,14 @@ import { tipo } from '../../tipo';
 })
 export class AnimalesComponent implements OnInit{
 @Input() animal:any;
-
+@Input() producto:any;
+@Input() animales:animal[]=[];
+productos:animal[]=[];
 constructor(private granjaService: GranjaServiceService){}
 
 ngOnInit(): void {
-  
+  for (this.animal in this.animales){
+    console.log(this.animal.id);
+  }
 }
 }

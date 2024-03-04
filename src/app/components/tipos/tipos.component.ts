@@ -1,4 +1,4 @@
-import { Component , OnInit, Input, Output} from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
 import { AnimalesComponent } from '../animales/animales.component';
 import { AppComponent } from '../../app.component';
 import { ButtonComponent } from '../button/button.component';
@@ -15,33 +15,36 @@ import { CommonModule } from '@angular/common';
   templateUrl: './tipos.component.html',
   // styleUrl: './tipos.component.css'
 })
-export class TiposComponent implements OnInit{
-  @Input()tipo: any;
- @Output()animales: animal[]=[];
- animal:any;
-  constructor(private granjaService: GranjaServiceService) {  }
+export class TiposComponent implements OnInit {
+  @Input() tipo: any;
+  @Output() animales: animal[] = [];
+  animal: any;
+  constructor(private granjaService: GranjaServiceService) { }
 
   ngOnInit(): void {
-    this.granjaService.obtenerGranja().subscribe(data=>{ 
-  });
-this.animales=this.tipo.animales;
-   
+    this.granjaService.obtenerGranja().subscribe(data => {
+    });
+    this.animales = this.tipo.animales;
+
+    for (let animal of this.animales) {
+      console.log(animal.id);
+      console.log(animal);
+    }
+
   }
 
 
- 
-
-  agregarTipo(){
+  agregarTipo() {
     this.granjaService.postTipoAnimal('MArina', 3, 21, 21, 45, 54, 'http.. ');
   }
 
 
-  eliminarTipo(){
+  eliminarTipo() {
     alert("EliminarTipo");
   }
 
-  
-  modificarTipo(){
+
+  modificarTipo() {
     alert("ModificarTipo");
   }
 
