@@ -57,11 +57,13 @@ obtenerTipos(): Observable<tipo[]> {
   }
 
 
-  postTipoAnimal(nombre : string, cantidad : number, expectativa: number, reproduccion: number, precioCompra: number, precioVenta: number, imagen: String){
-    console.log(nombre); 
-   const nuevo = {nombre, cantidad, expectativa, reproduccion, precioCompra, precioVenta, imagen};
+  postTipoAnimal(animal : string, cantidadMaxima : number, diasExpiracion: number, tiempoDeReproduccion: number, precioCompra: number, precioVenta: number, imagen: string){
+    // let id: number =0;
+    let animales: any = [];
+    console.log(animal); 
+   let nuevo:tipo = { animal, cantidadMaxima, diasExpiracion, tiempoDeReproduccion, precioCompra, precioVenta, imagen, animales};
    console.log(nuevo);
-    // this.http.post(`${this.apiUrl}/tipos`, nuevo);
+    this.http.post(`${this.apiUrl}/tipos`, nuevo);
   }
 
   postCompra(inputTipoCompra: string, inputCantidadCompra: number){

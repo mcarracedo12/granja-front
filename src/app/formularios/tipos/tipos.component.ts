@@ -3,7 +3,6 @@ import { Component } from '@angular/core';
 import{FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import { GranjaServiceService } from '../../services/granja-service.service';
 
-
 @Component({
   selector: 'app-tiposF',
   standalone: true,
@@ -38,7 +37,7 @@ export class TiposForm {
       this.agregarTipoForm.value.precioVenta ?? 0,
       this.agregarTipoForm.value.imagen ?? ''
     );
-   alert("PostTipoAnimal de Tipos Component");
+   alert("PostTipoAnimal de TiposForm Component");
   }
 
 
