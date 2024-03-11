@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 //import { ButtonComponent } from '../../components/button/button.component';
 import { GranjaServiceService } from '../../services/granja-service.service';
 import{FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
@@ -10,23 +10,40 @@ import{FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators} fro
   templateUrl: './comprar.component.html',
   styleUrl: './comprar.component.css'
 })
-export class ComprarComponent {
+export class ComprarComponent implements OnInit{
+  granja: any = {};
+  dineroEnCaja: number = 0;
 
   comprarForm = new FormGroup({
-    inputTipoCompra: new FormControl(''),
+    inputNombre: new FormControl(''),
+    inputFecha: new FormControl(''),
+    inputTipoCompra: new FormControl(0),
     inputCantidadCompra: new FormControl(0)
     
   })
 
   constructor(private granjaService: GranjaServiceService ) { 
+    this.granjaService.obtenerGranja().subscribe(data => {
+      this.granja = data;
+      this.dineroEnCaja = this.granja.dineroEnCaja;
+    });
   }
 
+  
   comprar(){
     this.granjaService.postCompra(
-      this.comprarForm.value.inputTipoCompra ?? '',
+      this.comprarForm.value.inputNombre ?? '',
+      this.comprarForm.value.inputFecha ?? '',
+      this.comprarForm.value.inputTipoCompra ?? 0,
       this.comprarForm.value.inputCantidadCompra ?? 0
     );
    alert("Compra de Tipos Component");
   }
+  ngOnInit(): void {
+    
+  }
+
+
+  
 
 }

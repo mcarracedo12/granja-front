@@ -3,13 +3,18 @@
     {{ compra.nombrePersona }}
     {{ compra.fecha}}
     
+
+    <!-- <div class="pill-group"> -->
+        <app-button text="X" (btnClick)="eliminarCompra()"></app-button>
+        <!-- <button onclick="eliminarCompra()"></button> -->
+        <!-- <app-button text="==>" (btnClick)="modificarCompra()"></app-button> -->
+    <!-- </div> -->
     <!-- <app-animales></app-animales> -->
 
-    <div class="pill-group">
         <!-- aca Meto el for para cada uno de los animales -->
         <!-- <app-animales [animal]="animal" *ngFor="let animal of animales" ></app-animales> -->
         <!-- <app-animales></app-animales> -->
 
-    </div>
+   
 
 </div>

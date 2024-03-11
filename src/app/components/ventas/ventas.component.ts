@@ -5,11 +5,12 @@ import { CommonModule } from '@angular/common';
 import { AppComponent } from '../../app.component';
 import { AnimalesComponent } from '../animales/animales.component';
 import { venta } from '../../venta';
+import { ButtonComponent } from '../button/button.component';
 
 @Component({
   selector: 'app-ventas',
   standalone: true,
-  imports: [AnimalesComponent, AppComponent, CommonModule, VentasComponent],
+  imports: [AnimalesComponent, AppComponent, CommonModule, VentasComponent, ButtonComponent],
   templateUrl: './ventas.component.html',
   styleUrl: './ventas.component.css',
   providers: [GranjaServiceService]
@@ -26,12 +27,20 @@ export class VentasComponent implements OnInit {
     console.log(this.venta);
     this.animales = this.venta.productos;
     console.log(this.animales);
-    // this.animal = this.animales[0];
+    
     for (let animal of this.animales) {
       console.log(animal.id);
       console.log(animal);
     }
 
   }
+
+  
+  eliminarVenta() {
+    alert("EliminarVenta");
+    console.log(this);
+    this.granjaService.eliminarVenta(this.venta);
+  }
+
 
 }

@@ -6,7 +6,7 @@ export interface granja
     nombre: string,
     ultimaActualizacion: Date,
     tiposAnimales: [],
-    animales: [],
+    // animales: [],
     compras: [],
     ventas:[]
 }

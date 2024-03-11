@@ -1,20 +1,28 @@
 <div class="pill">
-<div class="pill-group">
-    <div class="pill-form">
-        <div class="pill">
-            INGRESAR INFORMACION DE COMPRA:
+    <div class="pill-group">
+        <div class="pill-form">
+            <div class="pill">
+                INGRESAR INFORMACION DE COMPRA:
+            </div>
+            <form [formGroup]="comprarForm" (submit)="comprar()">
+                <div class="pill">
+                    <label for="nombre" class="pill">Nombre</label>
+                    <input type="nombre" class="text" formControlName="inputNombre">
+                </div>
+                <div class="pill">
+                    <label for="fecha" class="pill">Fecha</label>
+                    <input type="inputFecha" class="text" formControlName="inputFecha">
+                </div>
+                <div class="pill">
+                    <label for="inputTipoCompra" class="pill">Tipo de animal</label>
+                    <input type="inputTipoCompra" class="text" formControlName="inputTipoCompra">
+                </div>
+                <div class="pill">
+                    <label for="cantidadCompra" class="pill">Cantidad que quiere comprar</label>
+                    <input type="cantidadCompra" class="text" formControlName="inputCantidadCompra">
+                </div>
+                <button class="pill" type="submit">Comprar</button>
+            </form>
         </div>
-        <form [formGroup]= "comprarForm" (submit) = "comprar()"> 
-        <div class="pill">
-            <label for="tipoCompra" class="pill">Tipo de animal</label>
-            <input type="tipoCompra" class="text" formControlName="inputTipoCompra">
-        </div>
-        <div class="pill">
-            <label for="cantidadCompra" class="pill">Cantidad que quiere comprar</label>
-            <input type="cantidadCompra" class="text" formControlName="inputCantidadCompra">
-        </div>
-        <button class= "pill" type="submit">Comprar</button> 
-        </form>
     </div>
-</div>
 </div>

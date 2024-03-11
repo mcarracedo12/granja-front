@@ -22,25 +22,24 @@ export class TiposComponent implements OnInit {
   constructor(private granjaService: GranjaServiceService) { }
 
   ngOnInit(): void {
-    this.granjaService.obtenerGranja().subscribe(data => {
+    this.granjaService.obtenerTipos().subscribe(data => {
     });
     this.animales = this.tipo.animales;
 
-    for (let animal of this.animales) {
-      console.log(animal.id);
-      console.log(animal);
-    }
+    // for (let animal of this.animales) {
+    //   console.log(animal.id);
+    //   console.log(animal);
+    // } // Imprime bien en consola
 
   }
 
 
-  agregarTipo() {
-    this.granjaService.postTipoAnimal('MArina', 3, 21, 21, 45, 54, 'http.. ');
-  }
-
+ 
 
   eliminarTipo() {
     alert("EliminarTipo");
+    console.log(this);
+    this.granjaService.eliminarTipo(this.tipo);
   }
 
 

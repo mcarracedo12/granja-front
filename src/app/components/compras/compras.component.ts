@@ -5,11 +5,12 @@ import { animal } from '../../animal';
 import { AnimalesComponent } from '../animales/animales.component';
 import { CommonModule } from '@angular/common';
 import { AppComponent } from '../../app.component';
+import { ButtonComponent } from '../button/button.component';
 
 @Component({
   selector: 'app-compras',
   standalone: true,
-  imports: [ComprasComponent, AnimalesComponent, CommonModule, AppComponent],
+  imports: [ComprasComponent, AnimalesComponent, CommonModule, AppComponent, ButtonComponent],
   templateUrl: './compras.component.html',
   styleUrl: './compras.component.css', 
   providers:[GranjaServiceService]
@@ -32,6 +33,12 @@ export class ComprasComponent implements OnInit {
       console.log(animal);
     }
    
+  }
+
+  eliminarCompra() {
+    alert("EliminarCompra");
+    console.log(this);
+    this.granjaService.eliminarCompra(this.compra);
   }
 
 }
