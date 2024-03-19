@@ -16,8 +16,10 @@ import { tipo } from '../../tipo';
   providers:[GranjaServiceService]
 })
 export class AnimalesComponent implements OnInit{
+
+  
 @Input() animal:any;
-// @Input()animales:animal[]=[];
+// @Input() animales:any;
 // productos:animal[]=[];
 constructor(private granjaService: GranjaServiceService){}
 

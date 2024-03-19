@@ -6,14 +6,14 @@
             </div>
              <form [formGroup]= "venderForm" (submit) = "vender()">
             <div class="pill">
-                <label for="tipoVenta" class="pill">Tipo de animal</label>
+                <label for="tipoVenta" class="">Tipo de animal</label>
                 <input type="tipoVenta" class="text" formControlName="inputTipoVenta">
             </div>
             <div class="pill">
-                <label for="cantidadVenta" class="pill">Cantidad que quiere vender</label>
+                <label for="cantidadVenta" class="">Cantidad que quiere vender</label>
                 <input type="cantidadVenta" class="text" formControlName="inputCantidadVenta">
             </div>
-            <!-- <button class= "pill" type="submit">Vender</button> -->
+            <button class= "pill" type="submit">Vender</button>
             </form>
         </div>
     </div>

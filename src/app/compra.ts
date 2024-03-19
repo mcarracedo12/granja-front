@@ -3,7 +3,7 @@ import { animal } from "./animal";
 export interface compra
 {
     id?: number,
-    nombre: string,
+    nombrePersona: string,
     fecha: string,
     productos: animal[],
     

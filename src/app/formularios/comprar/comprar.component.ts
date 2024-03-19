@@ -16,7 +16,7 @@ export class ComprarComponent implements OnInit{
 
   comprarForm = new FormGroup({
     inputNombre: new FormControl(''),
-    inputFecha: new FormControl(''),
+    inputFecha: new FormControl('yyyy-mm-dd'),
     inputTipoCompra: new FormControl(0),
     inputCantidadCompra: new FormControl(0)
     
@@ -37,7 +37,10 @@ export class ComprarComponent implements OnInit{
       this.comprarForm.value.inputTipoCompra ?? 0,
       this.comprarForm.value.inputCantidadCompra ?? 0
     );
-   alert("Compra de Tipos Component");
+   alert("Compra de Comprar Component");
+   alert(this.dineroEnCaja);
+  
+
   }
   ngOnInit(): void {
     

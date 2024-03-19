@@ -16,15 +16,17 @@ import { ButtonComponent } from '../button/button.component';
   providers: [GranjaServiceService]
 })
 export class VentasComponent implements OnInit {
+
+  
   @Input() venta: any;
-  @Output()animales: animal[]=[];
-  animal: any;
+  @Output() animales: animal[] = [];
+   animal: any;
   
   constructor(private granjaService: GranjaServiceService) { }
 
   ngOnInit(): void {
     this.granjaService.obtenerVentas().subscribe(ventas => { });
-    console.log(this.venta);
+    // console.log(this.venta);
     this.animales = this.venta.productos;
     console.log(this.animales);
     
@@ -44,3 +46,4 @@ export class VentasComponent implements OnInit {
 
 
 }
+

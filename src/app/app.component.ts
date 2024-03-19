@@ -55,8 +55,8 @@ export class AppComponent {
     
   this.granjaService.obtenerTipos().subscribe(tipos=>{
     this.tipos = tipos;
-    // for(let compra of compras){
-    //   console.log(compra.nombrePersona);
+    // for(let tipo of tipos){
+    //   console.log(tipo.animal);
     // } 
     console.log(this.tipos);
   });
@@ -65,13 +65,16 @@ export class AppComponent {
     
   this.granjaService.obtenerCompras().subscribe(compras=>{
     this.compras = compras;
-    // for(let compra of compras){
-    //   console.log(compra.nombrePersona);
-    // } 
+    for(let compra of this.compras){
+      console.log(compra.nombrePersona);
+    } 
   });
 
   this.granjaService.obtenerVentas().subscribe(ventas=>{
-    this.ventas = ventas
+    this.ventas = ventas;
+    for(let venta of this.ventas){
+      console.log(venta.nombrePersona);
+    }
   });
 
    
