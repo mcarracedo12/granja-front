@@ -17,6 +17,7 @@ export class ComprarComponent implements OnInit{
   comprarForm = new FormGroup({
     inputNombre: new FormControl(''),
     inputFecha: new FormControl('yyyy-mm-dd'),
+    edadEnDiasAlIngresar: new FormControl(0),
     inputTipoCompra: new FormControl(0),
     inputCantidadCompra: new FormControl(0)
     
@@ -34,6 +35,7 @@ export class ComprarComponent implements OnInit{
     this.granjaService.postCompra(
       this.comprarForm.value.inputNombre ?? '',
       this.comprarForm.value.inputFecha ?? '',
+      this.comprarForm.value.edadEnDiasAlIngresar ?? 0,
       this.comprarForm.value.inputTipoCompra ?? 0,
       this.comprarForm.value.inputCantidadCompra ?? 0
     );
