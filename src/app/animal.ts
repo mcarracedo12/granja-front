@@ -13,7 +13,7 @@ export interface animal {
    // cantidadMaximaByTipo: 10000,
    // precioVentaByTipo: number,
    // edadActual: number,
-   // tipoId: number,
+    tipoId: number,
    
 
    // tipo: tipo,

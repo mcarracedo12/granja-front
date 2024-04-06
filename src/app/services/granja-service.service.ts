@@ -118,13 +118,13 @@ export class GranjaServiceService {
         console.log(tipo);
         // let precioCompra = this.tipo.precioCompra;
 
-        animal = { id, fechaIngresoAGranja, edadEnDiasAlIngresar };
+        animal = { id, fechaIngresoAGranja, edadEnDiasAlIngresar, tipoId };
 
 
         // animal.tipoId  = this.tipo.id;
 
         this.http.post(`${this.apiUrl}/tipos/${inputTipoCompra}/animales`, animal).subscribe();
-        console.log(animal);
+        // console.log(animal);
 
         console.log("Agregado!");
 
