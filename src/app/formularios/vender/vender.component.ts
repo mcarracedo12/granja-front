@@ -11,46 +11,37 @@ import{FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators} fro
   styleUrl: './vender.component.css'
 })
 export class VenderComponent implements OnInit{
-  venderForm: FormGroup;
-
-  // venderForm = new FormGroup({
-  //   inputTipoVenta: new FormControl(''),
-  //   inputCantidadVenta: new FormControl(0)
-    
-  // })
 
   
 
-constructor(private granjaService: GranjaServiceService, private formBuilder: FormBuilder){
+constructor(private granjaService: GranjaServiceService, private formBuilder: FormBuilder){}
 
-this.venderForm= this.formBuilder.group({
-  inputTipoVenta:['', [Validators.required]],
-  inputCantidadVenta: [0,[Validators.required]]
-});
-}
 
 ngOnInit(): void {
   
 }
 
-// vender(){
-//   this.granjaService.postVenta(
-//     this.venderForm.value.inputTipoVenta ?? '',
-//     this.venderForm.value.inputCantidadVenta ?? 0
-//   );
-//  alert("Venta de Tipos Component");
-// }
 
 
 vender(){
   this.granjaService.postVenta(
-    this.venderForm.value.inputTipoVenta ?? '',
+    this.venderForm.value.inputNombre ?? '',
+    this.venderForm.value.inputFecha ?? '',
+    this.venderForm.value.inputTipoVenta ?? 0,
     this.venderForm.value.inputCantidadVenta ?? 0
   );
   console.log(this.getInputCantidadVenta())
  alert("Venta de Tipos Component");
 }
 
+
+venderForm = new FormGroup({
+  inputNombre: new FormControl(''),
+  inputFecha: new FormControl('yyyy-mm-dd'),
+  inputTipoVenta: new FormControl(0),
+  inputCantidadVenta: new FormControl(0)
+  
+})
 
 
 getInputTipoVenta(){
