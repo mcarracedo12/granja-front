@@ -169,19 +169,18 @@ postVenta(inputNombre: string, inputFecha: string, inputTipoVenta: number, input
       for (let i: number = 1; i <= inputCantidadVenta; i++) {
         console.log("El precio es: " + tipo.precioVenta);
        
-          animal.precioVenta = tipo.precioVenta;
-          precioTotal = precioTotal + tipo.precioVenta;
-          animal.ventaId = nuevaVenta.id;
-          // animal.granjaId = 0;
-          // this.http.post(`${this.apiUrl}/animales/${animal.id}`).subscribe();
-          // alert("Modificado");
+       
+        for(let count = 0; count < inputCantidadVenta; count++ ){
+          let animal : animal = animales[count];
+          console.log(animal);
           this.http.delete(`${this.apiUrl}/animales/${animal.id}`).subscribe();
           alert("Eliminado");
+        }
         
       }
     
-      console.log("El precio es: " + tipo.precioVenta);
-      alert("El total es: " + precioTotal);
+      alert("El precio es: " + tipo.precioVenta * inputCantidadVenta);
+      
 
 
     }
