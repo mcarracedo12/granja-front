@@ -24,14 +24,14 @@ export class GranjaServiceService {
 
   url0 = 'http://localhost:3000/0';
   url1 = 'http://localhost:3000/1';
-  apiUrl = 'http://localhost:8080';
+  apiUrl = 'http://localhost:8080/granja/';
 
   constructor(private http: HttpClient) { }
   // constructor() { }
 
   async obtenerDatos(): Promise<granja> {
     // const data = await fetch(`${this.url1}`); // funciona
-    const data = await fetch(`${this.apiUrl}/granja`); // funciona con @CrossOrigin(origins = "http://localhost:4200") en Controller
+    const data = await fetch(`${this.apiUrl}`); // funciona con @CrossOrigin(origins = "http://localhost:4200") en Controller
     return await data.json() ?? {};
   }
 
@@ -44,7 +44,7 @@ export class GranjaServiceService {
 
   obtenerGranja(): Observable<granja> {
     // const data = this.http.get<granja>(`${this.url1}`);
-    const data = this.http.get<granja>(`${this.apiUrl}/granja`);
+    const data = this.http.get<granja>(`${this.apiUrl}1`);
     this.granja = data;
     this.dineroEnCaja = this.granja.dineroEnCaja;
     this.tipos = this.granja.tipos;
@@ -52,25 +52,25 @@ export class GranjaServiceService {
   }
 
   obtenerTipos(): Observable<tipo[]> {
-    // const tipos = this.http.get<tipo[]>(`${this.apiUrl}/granjas/1/tipos`);
-    const tipos = this.http.get<tipo[]>(`${this.apiUrl}/tipos`);
+    // const tipos = this.http.get<tipo[]>(`${this.apiUrl}/granja/1/tipos`);
+    const tipos = this.http.get<tipo[]>(`${this.apiUrl}1/tipos`);
     return tipos;
   }
 
 
   obtenerTipo(id: number): Observable<tipo> {
     // const tipos = this.http.get<tipo[]>(`${this.apiUrl}/granjas/1/tipos`);
-    const tipo = this.http.get<tipo>(`${this.apiUrl}/tipos/${id}`);
+    const tipo = this.http.get<tipo>(`${this.apiUrl}1/tipos/${id}`);
     return tipo;
   }
 
   obtenerCompras(): Observable<compra[]> {
-    const compras = this.http.get<compra[]>(`${this.apiUrl}/compras`);
+    const compras = this.http.get<compra[]>(`${this.apiUrl}1/compras`);
     return compras;
   }
 
   obtenerVentas(): Observable<venta[]> {
-    const ventas = this.http.get<venta[]>(`${this.apiUrl}/ventas`);
+    const ventas = this.http.get<venta[]>(`${this.apiUrl}1/ventas`);
     return ventas;
   }
 
