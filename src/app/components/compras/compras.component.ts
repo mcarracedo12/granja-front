@@ -26,7 +26,7 @@ export class ComprasComponent implements OnInit {
   ngOnInit(): void {
     this.granjaService.obtenerCompras().subscribe(compras=>{});
     console.log(this.compra);
-    this.animales = this.compra.productos;
+    this.animales = this.compra.productosComprados;
     console.log("this.animales");
     console.log(this.animales);
     for(let animal of this.animales){

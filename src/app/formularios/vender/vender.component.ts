@@ -37,7 +37,7 @@ vender(){
 
 venderForm = new FormGroup({
   inputNombre: new FormControl(''),
-  inputFecha: new FormControl('yyyy-mm-dd'),
+  inputFecha: new FormControl('dd-mm-yyyy'),
   inputTipoVenta: new FormControl(0),
   inputCantidadVenta: new FormControl(0)
   

@@ -10,4 +10,5 @@ export interface tipo
     precioVenta: number,
     imagen: string,
     animales: animal[],
+    granja_id: number,
 }

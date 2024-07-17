@@ -6,6 +6,6 @@ export interface venta
     id?: number,
     nombrePersona: string,
     fecha: string,
-    productos: animal[]
+    productosVendidos: animal[]
     
 }

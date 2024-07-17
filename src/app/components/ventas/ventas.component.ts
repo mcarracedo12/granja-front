@@ -4,7 +4,6 @@ import { animal } from '../../animal';
 import { CommonModule } from '@angular/common';
 import { AppComponent } from '../../app.component';
 import { AnimalesComponent } from '../animales/animales.component';
-import { venta } from '../../venta';
 import { ButtonComponent } from '../button/button.component';
 
 @Component({
@@ -27,7 +26,7 @@ export class VentasComponent implements OnInit {
   ngOnInit(): void {
     this.granjaService.obtenerVentas().subscribe(ventas => { });
     // console.log(this.venta);
-    this.animales = this.venta.productos;
+    this.animales = this.venta.productosVendidos;
     console.log(this.animales);
     
     for (let animal of this.animales) {

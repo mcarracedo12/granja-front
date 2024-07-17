@@ -16,7 +16,7 @@ export class ComprarComponent implements OnInit{
 
   comprarForm = new FormGroup({
     inputNombre: new FormControl(''),
-    inputFecha: new FormControl('yyyy-mm-dd'),
+    inputFecha: new FormControl('dd-mm-yyyy'),
     edadEnDiasAlIngresar: new FormControl(0),
     inputTipoCompra: new FormControl(0),
     inputCantidadCompra: new FormControl(0)
