@@ -5,7 +5,7 @@ export interface venta
 {
     id?: number,
     nombrePersona: string,
-    fecha: string,
+    fecha: Date,
     productosVendidos: animal[]
     
 }

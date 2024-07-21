@@ -110,7 +110,7 @@ export class GranjaServiceService {
 
 
 
-postVenta(inputNombre: string, inputFecha: string, inputTipoVenta: number, inputCantidadVenta: number) {
+postVenta(inputNombre: string, inputFecha: Date, inputTipoVenta: number, inputCantidadVenta: number) {
   console.log(inputTipoVenta);
   let id: number = 0;
     let animales: animal[];
@@ -119,7 +119,7 @@ postVenta(inputNombre: string, inputFecha: string, inputTipoVenta: number, input
   let tipo: tipo;
   let nombrePersona: string = inputNombre;
   
-  let fecha: string = inputFecha;
+  let fecha: Date = inputFecha;
   this.obtenerTipo(inputTipoVenta).subscribe(data => {
     console.log(data);
     tipo = data;
