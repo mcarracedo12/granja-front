@@ -7,19 +7,19 @@
              <form [formGroup]= "venderForm" (submit) = "vender()">
             <div class="pill">
                 <label for="nombre" class="">Nombre</label>
-                <input type="nombre" class="text" formControlName="inputNombre">
+                <input id="nombre" class="text" formControlName="inputNombre">
             </div>
             <div class="pill">
-                <label for="fecha" class="">Fecha</label>
-                <input type="inputFecha" class="text" formControlName="inputFecha">
+                <label for="inputFecha" class="">Fecha</label>
+                <input id="inputFecha" class="text" formControlName="inputFecha">
             </div>
             <div class="pill">
                 <label for="tipoVenta" class="">Tipo de animal</label>
-                <input type="tipoVenta" class="text" formControlName="inputTipoVenta">
+                <input id="tipoVenta" class="text" formControlName="inputTipoVenta">
             </div>
             <div class="pill">
                 <label for="cantidadVenta" class="">Cantidad que quiere vender</label>
-                <input type="cantidadVenta" class="text" formControlName="inputCantidadVenta">
+                <input id="cantidadVenta" class="text" formControlName="inputCantidadVenta">
             </div>
           
             <button class= "pill" type="submit">Vender</button>

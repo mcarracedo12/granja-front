@@ -7,23 +7,23 @@
             <form [formGroup]="comprarForm" (submit)="comprar()">
                 <div class="pill">
                     <label for="nombre" class="">Nombre</label>
-                    <input type="nombre" class="text" formControlName="inputNombre">
+                    <input id="nombre" class="text" formControlName="inputNombre">
                 </div>
                 <div class="pill">
-                    <label for="fecha" class="">Fecha</label>
-                    <input type="inputFecha" class="text" formControlName="inputFecha">
+                    <label for="inputFecha" class="">Fecha</label>
+                    <input id="inputFecha" class="text" formControlName="inputFecha">
                 </div>
                 <div class="pill">
                     <label for="edadEnDiasAlIngresar" class="">edadEnDiasAlIngresar</label>
-                    <input type="edadEnDiasAlIngresar" class="text" formControlName="edadEnDiasAlIngresar">
+                    <input id="edadEnDiasAlIngresar" class="text" formControlName="edadEnDiasAlIngresar">
                 </div>
                 <div class="pill">
                     <label for="inputTipoCompra" class="">Tipo de animal</label>
-                    <input type="inputTipoCompra" class="text" formControlName="inputTipoCompra">
+                    <input id="inputTipoCompra" class="text" formControlName="inputTipoCompra">
                 </div>
                 <div class="pill">
                     <label for="cantidadCompra" class="">Cantidad que quiere comprar</label>
-                    <input type="cantidadCompra" class="text" formControlName="inputCantidadCompra">
+                    <input id="cantidadCompra" class="text" formControlName="inputCantidadCompra">
                 </div>
                 <button class="pill" type="submit">Comprar</button>
             </form>
