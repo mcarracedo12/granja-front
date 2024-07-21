@@ -55,14 +55,12 @@ export class GranjaServiceService {
   }
 
   obtenerTipos(): Observable<tipo[]> {
-    // const tipos = this.http.get<tipo[]>(`${this.apiUrl}/granja/1/tipos`);
     const tipos = this.http.get<tipo[]>(`${this.apiUrl}${this.granja_id}/tipos`);
     return tipos;
   }
 
 
   obtenerTipo(id: number): Observable<tipo> {
-    // const tipos = this.http.get<tipo[]>(`${this.apiUrl}/granjas/1/tipos`);
     const tipo = this.http.get<tipo>(`${this.apiUrl}${this.granja_id}/tipos/${id}`);
     return tipo;
   }
@@ -86,7 +84,7 @@ export class GranjaServiceService {
     this.http.post(`${this.apiUrl}${this.granja_id}/tipos`, nuevo).subscribe();
   }
 
-  postCompra(nombrePersona: string, inputFecha: string, edadEnDiasAlIngresar: number, inputTipoCompra: number, inputCantidadCompra: number) {
+  postCompra(nombrePersona: string, fecha: Date, edadEnDiasAlIngresar: number, inputTipoCompra: number, inputCantidadCompra: number) {
     console.log(inputTipoCompra);
     let id = 0;
     let animales: animal[];
@@ -99,21 +97,16 @@ export class GranjaServiceService {
       console.log(tipo);
       //ASI no me deja hacer el POST
       // let now: Date = new Date();
+      // let fecha: Date = now;
       // let fecha: Date = now.toLocaleDateString();
-      let fecha: string = inputFecha;
+      // let fecha: string = inputFecha;
       // FALTA VER SI HAY SUFICIENTE DINERO EN CAJA
       let nuevaCompra: compra = { id, nombrePersona, fecha, productosComprados };
-      console.log("nuevaCompra");
-      console.log(nuevaCompra);
       this.http.post(`${this.apiUrl}${this.granja_id}/compras`, nuevaCompra).subscribe();
-      console.log(nuevaCompra.id);
+      console.log(nuevaCompra);
       // for (let i = 0; i < inputCantidadCompra; i++) {
-        let fechaIngresoAGranja: string = fecha;
+        let fechaIngresoAGranja: Date = fecha;
         let tipoId = inputTipoCompra;
-        // let compraId: number  = nuevaCompra.id;
-        // console.log(tipoId);
-        // console.log("Era el tipito");
-        // console.log(tipo);
         let precioVenta: number = 0;
         let ventaId: number = 0;
         animal = { id, fechaIngresoAGranja, edadEnDiasAlIngresar, tipoId, precioVenta };

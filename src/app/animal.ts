@@ -1,7 +1,7 @@
 import { tipo } from "./tipo";
 export interface animal {
    id?: number,
-   fechaIngresoAGranja: string,
+   fechaIngresoAGranja: Date,
    edadEnDiasAlIngresar: number,
    // nacimiento: Date,
    // fechaExpiracion: Date,

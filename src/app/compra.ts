@@ -4,7 +4,7 @@ export interface compra
 {
     id?: number,
     nombrePersona: string,
-    fecha: string,
+    fecha: Date,
     productosComprados: animal[],
     
 }
