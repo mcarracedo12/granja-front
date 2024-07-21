@@ -95,27 +95,15 @@ export class GranjaServiceService {
       console.log(data);
       let tipo = data;
       console.log(tipo);
-      //ASI no me deja hacer el POST
-      // let now: Date = new Date();
-      // let fecha: Date = now;
-      // let fecha: Date = now.toLocaleDateString();
-      // let fecha: string = inputFecha;
-      // FALTA VER SI HAY SUFICIENTE DINERO EN CAJA
       let nuevaCompra: compra = { id, nombrePersona, fecha, productosComprados };
       this.http.post(`${this.apiUrl}${this.granja_id}/compras`, nuevaCompra).subscribe();
       console.log(nuevaCompra);
-      // for (let i = 0; i < inputCantidadCompra; i++) {
         let fechaIngresoAGranja: Date = fecha;
         let tipoId = inputTipoCompra;
         let precioVenta: number = 0;
         let ventaId: number = 0;
         animal = { id, fechaIngresoAGranja, edadEnDiasAlIngresar, tipoId, precioVenta };
-        // animal.tipoId  = this.tipo.id;
         this.http.post(`${this.apiUrl}${this.granja_id}/tipos/${inputTipoCompra}/animales/${inputCantidadCompra}`, animal).subscribe();
-        // console.log(animal);
-        console.log(fechaIngresoAGranja);
-        console.log(edadEnDiasAlIngresar);
-      // }
   }
   );
 }
