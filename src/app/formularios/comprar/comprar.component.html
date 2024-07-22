@@ -4,29 +4,56 @@
             <div class="pill">
                 INGRESAR INFORMACION DE COMPRA:
             </div>
-            <form [formGroup]="comprarForm" (submit)="comprar()">
+            <form [formGroup]="comprarForm" (ngSubmit)="comprar()">
                 <div class="pill">
                     <label for="nombre" class="">Nombre</label>
                     <input id="nombre" class="text" formControlName="inputNombre">
+                    <div *ngIf="comprarForm.get('inputNombre')?.invalid && comprarForm.get('inputNombre')?.touched">
+                        <!-- <small *ngIf="comprarForm.get('inputNombre')?.errors?.required">El nombre es obligatorio.</small> -->
+                        <!-- <small *ngIf="comprarForm.get('inputNombre')?.errors?.pattern">El nombre solo debe contener letras y espacios.</small> -->
+                    </div>
                 </div>
                 <div class="pill">
                     <label for="inputFecha" class="">Fecha</label>
-                    <input id="inputFecha" class="text" formControlName="inputFecha">
+                    <input id="inputFecha" class="text" formControlName="inputFecha" type="date">
+                    <div *ngIf="comprarForm.get('inputFecha')?.invalid && comprarForm.get('inputFecha')?.touched">
+                        <!-- <small *ngIf="comprarForm.get('inputFecha')?.errors?.required">La fecha es obligatoria.</small> -->
+                    </div>
                 </div>
                 <div class="pill">
-                    <label for="edadEnDiasAlIngresar" class="">edadEnDiasAlIngresar</label>
-                    <input id="edadEnDiasAlIngresar" class="text" formControlName="edadEnDiasAlIngresar">
+                    <label for="edadEnDiasAlIngresar" class="">Edad en Días al Ingresar</label>
+                    <input id="edadEnDiasAlIngresar" class="text" formControlName="edadEnDiasAlIngresar" type="number">
+                    <div *ngIf="comprarForm.get('edadEnDiasAlIngresar')?.invalid && comprarForm.get('edadEnDiasAlIngresar')?.touched">
+                        <!-- <small *ngIf="comprarForm.get('edadEnDiasAlIngresar')?.errors?.required">La edad es obligatoria.</small> -->
+                        <!-- <small *ngIf="comprarForm.get('edadEnDiasAlIngresar')?.errors?.min">La edad debe ser un número positivo.</small> -->
+                    </div>
                 </div>
                 <div class="pill">
                     <label for="inputTipoCompra" class="">Tipo de animal</label>
-                    <input id="inputTipoCompra" class="text" formControlName="inputTipoCompra">
+                    <input id="inputTipoCompra" class="text" formControlName="inputTipoCompra" type="number">
+                    <div *ngIf="comprarForm.get('inputTipoCompra')?.invalid && comprarForm.get('inputTipoCompra')?.touched">
+                        <!-- <small *ngIf="comprarForm.get('inputTipoCompra')?.errors?.required">El tipo de animal es obligatorio.</small> -->
+                        <!-- <small *ngIf="comprarForm.get('inputTipoCompra')?.errors?.min">El tipo de animal debe ser un número positivo.</small> -->
+                    </div>
                 </div>
                 <div class="pill">
                     <label for="cantidadCompra" class="">Cantidad que quiere comprar</label>
-                    <input id="cantidadCompra" class="text" formControlName="inputCantidadCompra">
+                    <input id="cantidadCompra" class="text" formControlName="inputCantidadCompra" type="number">
+                    <div *ngIf="comprarForm.get('inputCantidadCompra')?.invalid && comprarForm.get('inputCantidadCompra')?.touched">
+                        <!-- <small *ngIf="comprarForm.get('inputCantidadCompra')?.errors?.required">La cantidad es obligatoria.</small> -->
+                        <!-- <small *ngIf="comprarForm.get('inputCantidadCompra')?.errors?.min">La cantidad debe ser mayor a 0.</small> -->
+                    </div>
                 </div>
                 <button class="pill" type="submit">Comprar</button>
             </form>
         </div>
     </div>
 </div>
+
+
+<!-- <div>
+    <div *ngIf="showContent">
+        Contenido a mostrar si showContent es verdadero
+      </div>
+      <button (click)="showContent = !showContent">Toggle Content</button>
+</div> -->

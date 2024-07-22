@@ -17,19 +17,23 @@ import { venta } from './venta';
 import { ComprasComponent } from './components/compras/compras.component';
 import { VentasComponent } from './components/ventas/ventas.component';
 import { Observable } from 'rxjs';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, HeaderComponent, TiposComponent, AnimalesComponent, TiposForm, ButtonComponent, ComprarComponent, VenderComponent, HttpClientModule, CommonModule, ComprasComponent, VentasComponent],
+  imports: [CommonModule, ReactiveFormsModule, RouterOutlet, HeaderComponent, TiposComponent, AnimalesComponent, TiposForm, ButtonComponent, ComprarComponent, VenderComponent, HttpClientModule, ComprasComponent, VentasComponent],
   providers: [GranjaServiceService],
   templateUrl: './app.component.html',
-  styleUrl: '../styles.css'
+  styleUrls: ['../styles.css']
   
 })
 export class AppComponent implements OnInit{
+
+  showContent = true;
+
   // @Input()tipos: tipo[] = [];
   // @Output() tipo: any;
   granja$!: Observable<granja>;
