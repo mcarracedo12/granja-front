@@ -16,7 +16,6 @@ import { ButtonComponent } from '../button/button.component';
 })
 export class VentasComponent implements OnInit {
 
-  
   @Input() venta: any;
   @Output() animales: animal[] = [];
    animal: any;

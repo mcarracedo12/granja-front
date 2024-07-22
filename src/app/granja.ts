@@ -1,3 +1,4 @@
+import { tipo } from "./tipo";
 
 export interface granja
 {
@@ -5,7 +6,7 @@ export interface granja
     dineroEnCaja: number,
     nombre: string,
     ultimaActualizacion: Date,
-    tiposAnimales: [],
+    tipos: tipo[],
     // animales: [],
     compras: [],
     ventas:[]

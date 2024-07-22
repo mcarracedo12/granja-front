@@ -21,7 +21,7 @@
     <div class="right-side">
       <div class="pill-group">
         <!-- aca Meto el for para cada tipo de animal *ngFor="let tipos of tipo" -->
-        <app-tipos [tipo]="tipo" *ngFor="let tipo of tipos"></app-tipos>
+        <app-tipos [tipo]="tipo" *ngFor="let tipo of tipos$ | async"></app-tipos>
       </div>
       
     </div>
@@ -31,12 +31,12 @@
 
 <div class="pill-group">
   <h3>COMPRAS</h3>
-  <app-compras [compra]="compra" *ngFor="let compra of compras"></app-compras>
+  <app-compras [compra]="compra" *ngFor="let compra of compras$ | async"></app-compras>
 </div>
 
 <div class="pill-group">
   <h3>VENTAS</h3>
-<app-ventas [venta]="venta" *ngFor="let venta of ventas"></app-ventas>
+<app-ventas [venta]="venta" *ngFor="let venta of ventas$ | async"></app-ventas>
 </div>
 
 <div class="social-links">

@@ -11,12 +11,12 @@ import { granja } from './granja';
 import { GranjaServiceService } from './services/granja-service.service';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
-import { animal } from './animal';
 import { tipo } from './tipo';
 import { compra } from './compra';
 import { venta } from './venta';
 import { ComprasComponent } from './components/compras/compras.component';
 import { VentasComponent } from './components/ventas/ventas.component';
+import { Observable } from 'rxjs';
 
 
 
@@ -29,57 +29,29 @@ import { VentasComponent } from './components/ventas/ventas.component';
   styleUrl: '../styles.css'
   
 })
-export class AppComponent {
-  @Input()tipos: tipo[] = [];
-  @Output() tipo: any;
-  data: any={};
-  granja: any;
-  animales: animal[]=[];
-  @Input()compras: compra[]=[];
-  @Input()ventas: venta[]=[];
-
-  // granjaService: GranjaServiceService = inject(GranjaServiceService);
+export class AppComponent implements OnInit{
+  // @Input()tipos: tipo[] = [];
+  // @Output() tipo: any;
+  granja$!: Observable<granja>;
+  tipos$!: Observable<tipo[]>;
+  compras$!: Observable<compra[]>;
+  ventas$!: Observable<venta[]>;
+  // animales: animal[]=[];
+  // @Input()compras: compra[]=[];
+  // @Input()ventas: venta[]=[];
 
   constructor(private granjaService: GranjaServiceService){
-    console.log("Inicio app Component");
-
-    // this.granja= granjaService.obtenerGranja(); // Me da un observable
-
-    this.granjaService.obtenerGranja().subscribe(data=>{
-    this.granja= data;
-    // this.tipos= this.granja.tiposAnimales;
-    this.animales = this.granja.animales;
-    // console.log(this.tipos);
-  
-  });
-    
-  this.granjaService.obtenerTipos().subscribe(tipos=>{
-    this.tipos = tipos;
-    // for(let tipo of tipos){
-    //   console.log(tipo.animal);
-    // } 
-    console.log(this.tipos);
-  });
-
-
-    
-  this.granjaService.obtenerCompras().subscribe(compras=>{
-    this.compras = compras;
-    for(let compra of this.compras){
-      console.log(compra.nombrePersona);
-    } 
-  });
-
-  this.granjaService.obtenerVentas().subscribe(ventas=>{
-    this.ventas = ventas;
-    for(let venta of this.ventas){
-      console.log(venta.nombrePersona);
-    }
-  });
-
-   
 
   }
+
+
+  ngOnInit(): void{
+    this.granja$ = this.granjaService.obtenerGranja();
+    this.tipos$ = this.granjaService.obtenerTipos();
+    this.compras$ = this.granjaService.obtenerCompras();
+    this.ventas$ = this.granjaService.obtenerVentas();
+  }
+
 
   actualizarGranja() {
     alert("ActualizarGranja");
