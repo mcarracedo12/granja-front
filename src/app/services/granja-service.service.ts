@@ -9,6 +9,7 @@ import { animal } from '../animal';
 import { venta } from '../venta';
 import { get } from 'http';
 import { log } from 'console';
+import { response } from 'express';
 
 // const httpOptions = {
 //   headers: new HttpHeaders({
@@ -35,9 +36,9 @@ export class GranjaServiceService {
   nombre$!: string;
   dineroEnCaja$!: number;
   ultimaActualizacion$!: Date;
-  // tipos$!: tipo[];
-  // compras$!: compra[];
-  // venta$!: venta[];
+  tipos$!: tipo[];
+  compras$!: compra[];
+  ventas$!: venta[];
 
 
   obtenerGranja(): Observable<granja> {
@@ -49,8 +50,9 @@ export class GranjaServiceService {
   }
 
   obtenerTipos(): Observable<tipo[]> {
-    const tipos = this.http.get<tipo[]>(`${this.apiUrl}${this.granja_id}/tipos`);
-    return tipos;
+    this.data = this.http.get<tipo[]>(`${this.apiUrl}${this.granja_id}/tipos`);
+    this.tipos$ = this.data;
+    return this.data;
   }
 
 
@@ -60,89 +62,108 @@ export class GranjaServiceService {
   }
 
   obtenerCompras(): Observable<compra[]> {
-    const compras = this.http.get<compra[]>(`${this.apiUrl}${this.granja_id}/compras`);
-    return compras;
+    this.data = this.http.get<compra[]>(`${this.apiUrl}${this.granja_id}/compras`);
+    this.compras$ = this.data;
+    return this.data;
   }
 
   obtenerVentas(): Observable<venta[]> {
-    const ventas = this.http.get<venta[]>(`${this.apiUrl}${this.granja_id}/ventas`);
-    return ventas;
+    this.data = this.http.get<venta[]>(`${this.apiUrl}${this.granja_id}/ventas`);
+    this.ventas$ = this.data;
+    return this.data;
   }
 
 
   postTipoAnimal(animal: string, cantidadMaxima: number, diasExpiracion: number, tiempoDeReproduccion: number, precioCompra: number, precioVenta: number, imagen: string) {
     let animales: any = [];
-    console.log(animal);
     let nuevo = { animal, cantidadMaxima, diasExpiracion, tiempoDeReproduccion, precioCompra, precioVenta, imagen, animales };
-    console.log(nuevo);
     this.http.post(`${this.apiUrl}${this.granja_id}/tipos`, nuevo).subscribe();
   }
 
   postCompra(nombrePersona: string, fecha: Date, edadEnDiasAlIngresar: number, inputTipoCompra: number, inputCantidadCompra: number) {
-    console.log(inputTipoCompra);
     let id = 0;
-    let animales: animal[];
-    let animal: animal;
     let productosComprados: animal[] = [];
-    
-    this.obtenerTipo(inputTipoCompra).subscribe(data => {
-      console.log(data);
-      let tipo = data;
+    this.obtenerTipo(inputTipoCompra).subscribe(tipo => {
       console.log(tipo);
       let nuevaCompra: compra = { id, nombrePersona, fecha, productosComprados };
-      this.http.post(`${this.apiUrl}${this.granja_id}/compras`, nuevaCompra).subscribe();
-      console.log(nuevaCompra);
-        let fechaIngresoAGranja: Date = fecha;
-        let tipoId = inputTipoCompra;
-        let precioVenta: number = 0;
-        let ventaId: number = 0;
-        animal = { id, fechaIngresoAGranja, edadEnDiasAlIngresar, tipoId, precioVenta };
-        this.http.post(`${this.apiUrl}${this.granja_id}/tipos/${inputTipoCompra}/animales/${inputCantidadCompra}`, animal).subscribe();
-  }
-  );
-}
-
-
-
-postVenta(inputNombre: string, inputFecha: Date, inputTipoVenta: number, inputCantidadVenta: number) {
-  console.log(inputTipoVenta);
-  let id: number = 0;
-    let animales: animal[];
-    let animal: animal;
-    let productosVendidos: animal[] = [];
-  let tipo: tipo;
-  let nombrePersona: string = inputNombre;
-  
-  let fecha: Date = inputFecha;
-  this.obtenerTipo(inputTipoVenta).subscribe(data => {
-    console.log(data);
-    tipo = data;
-    if (tipo.animales.length >= inputCantidadVenta) {
-      alert("Hay suficientes");
-      let nuevaVenta: venta = { id, nombrePersona, fecha, productosVendidos };
-      this.http.post(`${this.apiUrl}${this.granja_id}/ventas`, nuevaVenta).subscribe();
-      // let ventaId: number = nuevaVenta.id;
-      alert("Se puede Vender!");
-       animales = tipo.animales;
-      for (let i: number = 1; i <= inputCantidadVenta; i++) {
-        console.log("El precio es: " + tipo.precioVenta);
-        for(let count = 0; count < inputCantidadVenta; count++ ){
-          let animal : animal = animales[count];
-          this.http.delete(`${this.apiUrl}${this.granja_id}/animales/${animal.id}`).subscribe();
-
-          // alert("Eliminado");
+      // Realizar la primera solicitud HTTP para crear la compra
+      this.http.post<compra>(`${this.apiUrl}${this.granja_id}/compras`, nuevaCompra).subscribe(compraAgregada => {
+        console.log(compraAgregada);
+        if (compraAgregada && compraAgregada.id !== undefined) {
+          let fechaIngresoAGranja: Date = fecha;
+          let tipoId = inputTipoCompra;
+          let precioVenta: number = 0;
+          let precioCompra: number = tipo.precioCompra;
+          let ventaId: number = 0;
+          let compraId: number = compraAgregada.id;
+          for (let i = 0; i < inputCantidadCompra; i++) {
+            let animal: animal = { id, fechaIngresoAGranja, edadEnDiasAlIngresar, precioCompra, precioVenta, tipoId, compraId, ventaId };
+            // Realizar la segunda solicitud HTTP para añadir los animales a la compra
+            this.http.post(`${this.apiUrl}${this.granja_id}/tipos/${inputTipoCompra}/animales`, animal).subscribe(() => {
+              console.log("Animal agregado");
+            }, error => {
+              console.error("Error al agregar el animal", error);
+            });
+          }
+        } else {
+          console.error("Error: compraAgregada.id es undefined");
         }
-      }
-      alert("El precio es: " + tipo.precioVenta * inputCantidadVenta);
-    }
-    else {
-      alert("No hay suficiente cantidad");
-    }
+      }, error => {
+        console.error("Error al crear la compra", error);
+      });
+    });
   }
+  
+  
 
-  );
-
-}
+  postVenta(inputNombre: string, inputFecha: Date, inputTipoVenta: number, inputCantidadVenta: number) {
+    console.log(inputTipoVenta);
+    let id: number = 0;
+    let animales: animal[] = [];
+    let productosVendidos: animal[] = [];
+    let nombrePersona: string = inputNombre;
+    let fecha: Date = inputFecha;
+    this.obtenerTipo(inputTipoVenta).subscribe(data => {
+      console.log(data);
+      let tipo = data;
+      if (tipo && tipo.animales && tipo.animales.length >= inputCantidadVenta) {
+        alert("Hay suficientes");
+        // Obtener los animales del tipo seleccionado
+        animales = tipo.animales;
+        // Seleccionar los animales que se van a vender
+        for (let count = 0; count < inputCantidadVenta; count++) {
+          let animal: animal = animales[count];
+          productosVendidos.push(animal);
+        }
+        // Crear la nueva venta
+        let nuevaVenta: venta = { id, nombrePersona, fecha, productosVendidos };
+        // Enviar la nueva venta al backend
+        this.http.post<venta>(`${this.apiUrl}${this.granja_id}/ventas`, nuevaVenta).subscribe(ventaAgregada => {
+          console.log(ventaAgregada);
+          // Actualizar cada animal con la nueva venta
+          for (let animal of productosVendidos) {
+            animal.ventaId = ventaAgregada.id;
+            animal.precioVenta = tipo.precioVenta;
+            // Actualizar el animal en el backend
+            this.http.put(`${this.apiUrl}${this.granja_id}/animales/${animal.id}`, animal).subscribe(() => {
+              console.log("Animal actualizado");
+            }, error => {
+              console.error("Error al actualizar el animal", error);
+            });
+          }
+          alert("Venta realizada con éxito");
+        }, error => {
+          console.error("Error al crear la venta", error);
+        });
+      } else {
+        alert("No hay suficiente cantidad");
+      }
+    }, error => {
+      console.error("Error al obtener el tipo", error);
+      alert("El tipo no se encontró");
+    });
+  }
+  
 
 
 eliminarTipo(tipo: tipo) {

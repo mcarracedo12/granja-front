@@ -28,10 +28,10 @@ export class VentasComponent implements OnInit {
     this.animales = this.venta.productosVendidos;
     console.log(this.animales);
     
-    for (let animal of this.animales) {
-      console.log(animal.id);
-      console.log(animal);
-    }
+    // for (let animal of this.animales) {
+    //   console.log(animal.id);
+    //   console.log(animal);
+    // }
 
   }
 

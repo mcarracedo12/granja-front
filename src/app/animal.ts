@@ -5,7 +5,7 @@ export interface animal {
    edadEnDiasAlIngresar: number,
    // nacimiento: Date,
    // fechaExpiracion: Date,
-   // precioCompra: 0.0,
+   precioCompra: number,
    precioVenta: number,
    // tiempoDeReproduccionByTipo: number,
    // diasExpiracionByTipo: number,
@@ -17,7 +17,7 @@ export interface animal {
    
 
    // tipo: tipo,
-   // compraId: number,
-   // ventaId?: number
+   compraId: number,
+   ventaId?: number
    // animalByTipo: string
 }
