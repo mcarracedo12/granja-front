@@ -22,36 +22,30 @@ import { log } from 'console';
 })
 export class GranjaServiceService {
 
-  url0 = 'http://localhost:3000/0';
-  url1 = 'http://localhost:3000/1';
+  // url0 = 'http://localhost:3000/0';
+  // url1 = 'http://localhost:3000/1';
   apiUrl = 'http://localhost:8080/granja/';
 
   granja_id = 1;
   
   constructor(private http: HttpClient) { }
-  // constructor() { }
 
-  async obtenerDatos(): Promise<granja> {
-    // const data = await fetch(`${this.url1}`); // funciona
-    const data = await fetch(`${this.apiUrl}`); // funciona con @CrossOrigin(origins = "http://localhost:4200") en Controller
-    return await data.json() ?? {};
-  }
-
-
-  granja: any = {};
-  dineroEnCaja: number = 0;
-  tipos: tipo[] = [];
-  tipo: any;
-  
+  data!: any;
+  granja$!: granja;
+  nombre$!: string;
+  dineroEnCaja$!: number;
+  ultimaActualizacion$!: Date;
+  // tipos$!: tipo[];
+  // compras$!: compra[];
+  // venta$!: venta[];
 
 
   obtenerGranja(): Observable<granja> {
-    // const data = this.http.get<granja>(`${this.url1}`);
-    const data = this.http.get<granja>(`${this.apiUrl}${this.granja_id}`);
-    this.granja = data;
-    this.dineroEnCaja = this.granja.dineroEnCaja;
-    this.tipos = this.granja.tipos;
-    return data;
+    this.data = this.http.get<granja>(`${this.apiUrl}${this.granja_id}`);
+    this.granja$ = this.data;
+    // this.dineroEnCaja$ = this.granja$.dineroEnCaja;
+    // this.tipos$ = this.granja$.tipos;
+    return this.data;
   }
 
   obtenerTipos(): Observable<tipo[]> {
@@ -135,6 +129,7 @@ postVenta(inputNombre: string, inputFecha: Date, inputTipoVenta: number, inputCa
         for(let count = 0; count < inputCantidadVenta; count++ ){
           let animal : animal = animales[count];
           this.http.delete(`${this.apiUrl}${this.granja_id}/animales/${animal.id}`).subscribe();
+
           // alert("Eliminado");
         }
       }
