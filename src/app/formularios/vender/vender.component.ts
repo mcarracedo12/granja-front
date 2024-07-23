@@ -22,10 +22,10 @@ export class VenderComponent implements OnInit {
 
   ngOnInit(): void {
     this.venderForm = this.fb.group({
-      inputNombre: ['Nombre', [Validators.required, Validators.pattern(/^[a-zA-Z\s]*$/)]],
-      inputFecha:  [this.getDateFormatted(this.getTodayDate()), Validators.required],
-      inputTipoVenta:  ['', [Validators.required, Validators.min(1)]],
-      inputCantidadVenta:  ['', [Validators.required, Validators.min(1)]] 
+      inputNombre: ['', Validators.required],
+      inputFecha: [this.getDateFormatted(this.getTodayDate()), Validators.required],
+      inputTipoVenta: [0, Validators.required],
+      inputCantidadVenta: [0, Validators.required]
     });
   }
 
@@ -42,10 +42,6 @@ export class VenderComponent implements OnInit {
 
 
   vender(): void {
-
-    if (this.venderForm.valid) {
-      console.log("Form is valid");
- 
     const fecha: Date = this.venderForm.value.inputFecha;
     this.granjaService.postVenta(
       this.venderForm.value.inputNombre ?? '',
@@ -56,11 +52,6 @@ export class VenderComponent implements OnInit {
     console.log(fecha);
     alert("Venta de Tipos Component");
   }
-  
-  else{
-    console.log("Form is not valid");
-    alert("Hay valores en la compra que no cumplen los requerimientos");
-  }
-}
+
 
 }

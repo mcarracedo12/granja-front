@@ -95,13 +95,12 @@ export class GranjaServiceService {
           let precioVenta: number = 0;
           let precioCompra: number = tipo.precioCompra;
           let ventaId: number = 0;
-          let compraId: number = compraAgregada.id; 
+          let compraId: number = compraAgregada.id;
           for (let i = 0; i < inputCantidadCompra; i++) {
             let animal: animal = { id, fechaIngresoAGranja, edadEnDiasAlIngresar, precioCompra, precioVenta, tipoId, compraId, ventaId };
             // Realizar la segunda solicitud HTTP para añadir los animales a la compra
-            this.http.post(`${this.apiUrl}${this.granja_id}/tipos/${inputTipoCompra}/animales`, animal).subscribe((animal) => {
+            this.http.post(`${this.apiUrl}${this.granja_id}/tipos/${inputTipoCompra}/animales`, animal).subscribe(() => {
               console.log("Animal agregado");
-              console.log(animal);
             }, error => {
               console.error("Error al agregar el animal", error);
             });
@@ -114,7 +113,6 @@ export class GranjaServiceService {
       });
     });
   }
-  
   
 
   postVenta(inputNombre: string, inputFecha: Date, inputTipoVenta: number, inputCantidadVenta: number) {
@@ -165,6 +163,7 @@ export class GranjaServiceService {
     });
   }
   
+  
 
 
 eliminarTipo(tipo: tipo) {
@@ -172,7 +171,7 @@ eliminarTipo(tipo: tipo) {
 }
 
 eliminarAnimal(animal: animal) {
-  return this.http.delete<animal>(`${this.apiUrl}${this.granja_id}/animales/${animal.id}`).subscribe();
+ this.http.delete<animal>(`${this.apiUrl}${this.granja_id}/animales/${animal.id}`).subscribe();
 }
 
 eliminarVenta(venta: venta) {
@@ -183,6 +182,12 @@ eliminarCompra(compra: compra) {
   return this.http.delete<compra>(`${this.apiUrl}${this.granja_id}/compras/${compra.id}`).subscribe();
 }
 
-
+getDateFormatted(fecha: Date): string {
+  // const today = new Date();
+  const day = String(fecha.getDate()).padStart(2, '0');
+  const month = String(fecha.getMonth() + 1).padStart(2, '0'); // Months are 0-based
+  const year = fecha.getFullYear();
+  return `${day}-${month}-${year}`;
+}
 
 }

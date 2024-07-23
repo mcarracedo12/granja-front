@@ -1,4 +1,4 @@
-<div class="pill">
+<!-- <div class="pill">
     <div class="pill-group">
         <div class="pill-form">
             <div class="pill">
@@ -43,6 +43,36 @@
                 </div>
 
                 <button class="pill" type="submit">Vender</button>
+            </form>
+        </div>
+    </div>
+</div> -->
+
+<div class="pill">
+    <div class="pill-group">
+        <div class="pill-form">
+            <div class="pill">
+                INGRESAR INFORMACION DE VENTA:
+            </div>
+             <form [formGroup]= "venderForm" (submit) = "vender()">
+            <div class="pill">
+                <label for="nombre" class="">Nombre</label>
+                <input id="nombre" class="text" formControlName="inputNombre">
+            </div>
+            <div class="pill">
+                <label for="inputFecha" class="">Fecha</label>
+                <input id="inputFecha" class="text" formControlName="inputFecha">
+            </div>
+            <div class="pill">
+                <label for="tipoVenta" class="">Tipo de animal</label>
+                <input id="tipoVenta" class="text" formControlName="inputTipoVenta">
+            </div>
+            <div class="pill">
+                <label for="cantidadVenta" class="">Cantidad que quiere vender</label>
+                <input id="cantidadVenta" class="text" formControlName="inputCantidadVenta">
+            </div>
+          
+            <button class= "pill" type="submit">Vender</button>
             </form>
         </div>
     </div>
