@@ -19,6 +19,7 @@ export class ComprasComponent implements OnInit {
   @Input()compra: any; 
   @Output()animales:animal[]=[];
   animal:any;
+  animales$!: animal[];
 
   constructor(private granjaService: GranjaServiceService){}
 

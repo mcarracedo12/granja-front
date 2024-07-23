@@ -9,8 +9,8 @@ export interface animal {
    precioVenta: number,
    // tiempoDeReproduccionByTipo: number,
    // diasExpiracionByTipo: number,
-   // precioCompraByTipo: 10.0,
-   // cantidadMaximaByTipo: 10000,
+   // precioCompraByTipo: number,
+   // cantidadMaximaByTipo: number,
    // precioVentaByTipo: number,
    // edadActual: number,
    tipoId: number
