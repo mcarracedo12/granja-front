@@ -11,7 +11,7 @@ import { CommonModule, NgIf } from '@angular/common';
   styleUrls: ['./comprar.component.css']
 })
 export class ComprarComponent implements OnInit {
-  showContent = true;
+
   comprarForm!: FormGroup;
 
   constructor(private fb: FormBuilder, private granjaService: GranjaServiceService) { }
@@ -40,11 +40,9 @@ export class ComprarComponent implements OnInit {
 
   comprar(): void {
     if (this.comprarForm.valid) {
+      console.log("Form is valid");
       const fecha: Date = this.comprarForm.value.inputFecha;
-      // Convertir la fecha de string a objeto Date
-      // const fechaParts = this.comprarForm.value.inputFecha.split('-');
-      // const fecha = new Date(Number(fechaParts[2]), Number(fechaParts[1]) - 1, Number(fechaParts[0]));
-
+ 
       this.granjaService.postCompra(
         this.comprarForm.value.inputNombre ?? '',
         fecha,
@@ -53,11 +51,15 @@ export class ComprarComponent implements OnInit {
         this.comprarForm.value.inputCantidadCompra ?? 0
       );
 
-      console.log(this.comprarForm.value.inputCantidadCompra);
       alert("Compra de Tipos Component");
       console.log(this.comprarForm.value);
-    } else {
-      this.comprarForm.markAllAsTouched();
     }
+    else {
+      console.log("Form is not valid");
+      alert("Hay valores en la compra que no cumplen los requerimientos");
+      // this.comprarForm.markAllAsTouched();
+
+    }
+
   }
 }
