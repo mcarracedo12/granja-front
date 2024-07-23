@@ -24,8 +24,8 @@ export class VenderComponent implements OnInit {
     this.venderForm = this.fb.group({
       inputNombre: ['Nombre', [Validators.required, Validators.pattern(/^[a-zA-Z\s]*$/)]],
       inputFecha:  [this.getDateFormatted(this.getTodayDate()), Validators.required],
-      inputTipoVenta:  [0, [Validators.required, Validators.min(1)]],
-      inputCantidadVenta:  [0, [Validators.required, Validators.min(1)]] 
+      inputTipoVenta:  ['', [Validators.required, Validators.min(1)]],
+      inputCantidadVenta:  ['', [Validators.required, Validators.min(1)]] 
     });
   }
 

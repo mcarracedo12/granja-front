@@ -4,41 +4,45 @@
             <div class="pill">
                 INGRESAR INFORMACION DE VENTA:
             </div>
-             <form [formGroup]= "venderForm" (submit) = "vender()">
-            <div class="pill">
-                <label for="nombre" class="">Nombre</label>
-                <input id="nombre" class="text" formControlName="inputNombre">
-                <div *ngIf="venderForm.get('inputNombre')?.invalid && venderForm.get('inputNombre')?.touched">
-                    <!-- <small *ngIf="comprarForm.get('inputNombre')?.errors?.required">El nombre es obligatorio.</small> -->
-                    <!-- <small *ngIf="comprarForm.get('inputNombre')?.errors?.pattern">El nombre solo debe contener letras y espacios.</small> -->
-                </div>
-            </div>
-            <div class="pill">
-                <label for="inputFecha" class="">Fecha</label>
-                <input id="inputFecha" class="text" formControlName="inputFecha" type="date">
-                <div *ngIf="venderForm.get('inputFecha')?.invalid && venderForm.get('inputFecha')?.touched">
-                    <!-- <small *ngIf="comprarForm.get('inputFecha')?.errors?.required">La fecha es obligatoria.</small> -->
-                </div>
-            </div>
-            <div class="pill">
-                <label for="tipoVenta" class="">Tipo de animal</label>
-                <input id="tipoVenta" class="text" formControlName="inputTipoVenta" type="number">
-                <div *ngIf="venderForm.get('inputTipoVenta')?.invalid && venderForm.get('inputTipoVenta')?.touched">
-                    <!-- <small *ngIf="comprarForm.get('edadEnDiasAlIngresar')?.errors?.required">La edad es obligatoria.</small> -->
-                    <!-- <small *ngIf="comprarForm.get('edadEnDiasAlIngresar')?.errors?.min">La edad debe ser un número positivo.</small> -->
-                </div>
-            </div>
-            <div class="pill">
-                <label for="cantidadVenta" class="">Cantidad que quiere vender</label>
-                <input id="cantidadVenta" class="text" formControlName="inputCantidadVenta" type="number">
-                <div *ngIf="venderForm.get('inputCantidadVenta')?.invalid && venderForm.get('inputCantidadVenta')?.touched">
-                    <!-- <small *ngIf="comprarForm.get('inputCantidadCompra')?.errors?.required">La cantidad es obligatoria.</small> -->
-                    <!-- <small *ngIf="comprarForm.get('inputCantidadCompra')?.errors?.min">La cantidad debe ser mayor a 0.</small> -->
+            <form [formGroup]="venderForm" (submit)="vender()">
+                <div class="pill">
+                    <label for="nombre" class="">Nombre</label>
+                    <input id="nombre" class="text" formControlName="inputNombre">
+                    <div *ngIf="venderForm.get('inputNombre')?.invalid && venderForm.get('inputNombre')?.touched"
+                        class="alert">
+                        <div *ngIf="venderForm.get('inputNombre')?.errors?.['required']">El nombre es obligatorio.</div>
+                    </div>
                 </div>
 
-            </div>
-          
-            <button class= "pill" type="submit">Vender</button>
+                <div class="pill">
+                    <label for="inputFecha" class="">Fecha</label>
+                    <input id="inputFecha" class="text" formControlName="inputFecha" type="date">
+                    <div *ngIf="venderForm.get('inputFecha')?.invalid && venderForm.get('inputFecha')?.touched"
+                        class="alert">
+                        <div *ngIf="venderForm.get('inputFecha')?.errors?.['required']">La fecha es obligatoria.</div>
+                    </div>
+                </div>
+                <div class="pill">
+                    <label for="tipoVenta" class="">Tipo de animal</label>
+                    <input id="tipoVenta" class="text" formControlName="inputTipoVenta" type="number">
+                    <div *ngIf="venderForm.get('inputTipoVenta')?.invalid && venderForm.get('inputTipoVenta')?.touched"
+                        class="alert">
+                        <div *ngIf="venderForm.get('inputTipoVenta')?.errors?.['required']">El tipo es obligatoria
+                            y debe ser un número positivo.</div>
+                    </div>
+                </div>
+
+                <div class="pill">
+                    <label for="cantidadVenta" class="">Cantidad que quiere vender</label>
+                    <input id="cantidadVenta" class="text" formControlName="inputCantidadVenta" type="number">
+                    <div
+                        *ngIf="venderForm.get('inputCantidadVenta')?.invalid && venderForm.get('inputCantidadVenta')?.touched" class="alert">
+                        <div *ngIf="venderForm.get('inputCantidadVenta')?.errors?.['required']">La cantidad es obligatoria y debe ser mayor a 0.</div>
+                    </div>
+
+                </div>
+
+                <button class="pill" type="submit">Vender</button>
             </form>
         </div>
     </div>
