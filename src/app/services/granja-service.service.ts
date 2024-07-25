@@ -84,6 +84,10 @@ export class GranjaServiceService {
     let id = 0;
     let productosComprados: animal[] = [];
     this.obtenerTipo(inputTipoCompra).subscribe(tipo => {
+      if (!tipo) {
+        console.error("Error al obtener el tipo");
+        alert("El tipo no se encontró");
+      }else{
       console.log(tipo);
       let nuevaCompra: compra = { id, nombrePersona, fecha, productosComprados };
       // Realizar la primera solicitud HTTP para crear la compra
@@ -101,6 +105,7 @@ export class GranjaServiceService {
             // Realizar la segunda solicitud HTTP para añadir los animales a la compra
             this.http.post(`${this.apiUrl}${this.granja_id}/tipos/${inputTipoCompra}/animales`, animal).subscribe(() => {
               console.log("Animal agregado");
+
             }, error => {
               console.error("Error al agregar el animal", error);
             });
@@ -111,6 +116,7 @@ export class GranjaServiceService {
       }, error => {
         console.error("Error al crear la compra", error);
       });
+    }
     });
   }
 

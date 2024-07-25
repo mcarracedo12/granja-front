@@ -44,11 +44,11 @@ export class ComprarComponent implements OnInit {
       const fecha: Date = this.comprarForm.value.inputFecha;
  
       this.granjaService.postCompra(
-        this.comprarForm.value.inputNombre ?? '',
+        this.comprarForm.value.inputNombre,
         fecha,
-        this.comprarForm.value.edadEnDiasAlIngresar ?? 0,
-        this.comprarForm.value.inputTipoCompra ?? 0,
-        this.comprarForm.value.inputCantidadCompra ?? 0
+        this.comprarForm.value.edadEnDiasAlIngresar,
+        this.comprarForm.value.inputTipoCompra,
+        this.comprarForm.value.inputCantidadCompra
       );
 
       alert("Compra de Tipos Component");
