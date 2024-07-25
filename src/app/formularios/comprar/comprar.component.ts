@@ -21,8 +21,8 @@ export class ComprarComponent implements OnInit {
       inputNombre: ['Nombre', [Validators.required, Validators.pattern(/^[a-zA-Z\s]*$/)]], // Solo letras y espacios
       inputFecha: [this.getDateFormatted(this.getTodayDate()), Validators.required], // Validar que no esté vacío
       edadEnDiasAlIngresar: [0, [Validators.required, Validators.min(0)]], // Números positivos
-      inputTipoCompra: [1, [Validators.required, Validators.min(1)]], // Números positivos
-      inputCantidadCompra: [1, [Validators.required, Validators.min(1)]] // Números positivos mayor que 0
+      inputTipoCompra: [0, [Validators.required, Validators.min(1)]], // Números positivos
+      inputCantidadCompra: [0, [Validators.required, Validators.min(1)]] // Números positivos mayor que 0
     });
   }
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, numberAttribute, OnInit } from '@angular/core';
 //import { ButtonComponent } from '../../components/button/button.component';
 import { GranjaServiceService } from '../../services/granja-service.service';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -22,10 +22,10 @@ export class VenderComponent implements OnInit {
 
   ngOnInit(): void {
     this.venderForm = this.fb.group({
-      inputNombre: ['', Validators.required],
-      inputFecha: [this.getDateFormatted(this.getTodayDate()), Validators.required],
-      inputTipoVenta: [0, Validators.required],
-      inputCantidadVenta: [0, Validators.required]
+      inputNombre: ['',[Validators.required, Validators.pattern(/^[a-zA-Z\s]*$/)]],
+      inputFecha: [this.getDateFormatted(this.getTodayDate()), [Validators.required]],
+      inputTipoVenta: [0,  [Validators.required, Validators.min(1)]],
+      inputCantidadVenta: [0,  [Validators.required, Validators.min(1)]]
     });
   }
 
@@ -42,15 +42,21 @@ export class VenderComponent implements OnInit {
 
 
   vender(): void {
-    const fecha: Date = this.venderForm.value.inputFecha;
-    this.granjaService.postVenta(
-      this.venderForm.value.inputNombre ?? '',
+    // if(this.venderForm.valid){
+      const fecha: Date = this.venderForm.value.inputFecha;
+      this.granjaService.postVenta(
+      this.venderForm.value.inputNombre,
       fecha,
-      this.venderForm.value.inputTipoVenta ?? 0,
-      this.venderForm.value.inputCantidadVenta ?? 0
+      this.venderForm.value.inputTipoVenta,
+      this.venderForm.value.inputCantidadVenta
     );
     console.log(fecha);
     alert("Venta de Tipos Component");
+    // }
+    // else{
+    //   console.log("Form is not valid");
+    //   alert("Hay valores en la venta que no cumplen los requerimientos");
+    // }
   }
 
 
