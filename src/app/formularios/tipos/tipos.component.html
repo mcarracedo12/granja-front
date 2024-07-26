@@ -1,43 +1,101 @@
 <div class="pill">
-<div class="pill-group">
-    <div class="pill-form">
-        <div class="pill">
-            INGRESAR UN NUEVO ANIMAL A LA GRANJA:
+    <div class="pill-group">
+        <div class="pill-form">
+            <div class="pill">
+                INGRESAR UN NUEVO ANIMAL A LA GRANJA:
+            </div>
+            <form [formGroup]="agregarTipoForm" (ngSubmit)="postTipoAnimal()">
+
+                <div class="pill">
+                    <label for="nombre" class="">Nombre del animal</label>
+                    <input id="nombre" class="text" formControlName="nombre">
+                </div>
+
+                <div *ngIf="agregarTipoForm.get('nombre')?.invalid && agregarTipoForm.get('nombre')?.touched"
+                    class="alert">
+                    <div *ngIf="agregarTipoForm.get('nombre')?.errors?.['required']">El nombre es obligatorio.</div>
+                </div>
+
+                <div class="pill">
+                    <label for="cantidad" class="">Cantidad maxima en granja</label>
+                    <input id="cantidad" class="text" formControlName="cantidad">
+                </div>
+                <div *ngIf="agregarTipoForm.get('cantidad')?.invalid && agregarTipoForm.get('cantidad')?.touched"
+                    class="alert">
+                    <div *ngIf="agregarTipoForm.get('cantidad')?.errors?.['required']">La cantidad es obligatoria.
+                    </div>
+                    <div *ngIf="agregarTipoForm.get('cantidad')?.errors?.['min']">La cantidad debe ser un numero
+                        positivo.</div>
+                </div>
+
+                <div class="pill">
+                    <label for="expectativa" class="">Expectativa de vida expresados en dias</label>
+                    <input id="expectativa" class="text" formControlName="expectativa">
+                </div>
+                <div *ngIf="agregarTipoForm.get('expectativa')?.invalid && agregarTipoForm.get('expectativa')?.touched"
+                    class="alert">
+                    <div *ngIf="agregarTipoForm.get('expectativa')?.errors?.['required']">La expectativa es obligatoria.
+                    </div>
+                    <div *ngIf="agregarTipoForm.get('expectativa')?.errors?.['min']">La expectativa debe ser un numero
+                        positivo.</div>
+                </div>
+
+                <div class="pill">
+                    <label for="reproduccion" class="">Cada cuantos dias se reproduce?</label>
+                    <input id="reproduccion" class="text" formControlName="reproduccion">
+                </div>
+                <div *ngIf="agregarTipoForm.get('reproduccion')?.invalid && agregarTipoForm.get('reproduccion')?.touched"
+                    class="alert">
+                    <div *ngIf="agregarTipoForm.get('reproduccion')?.errors?.['required']">La reproduccion es
+                        obligatoria.
+                    </div>
+                    <div *ngIf="agregarTipoForm.get('reproduccion')?.errors?.['min']">La reproduccion debe ser un numero
+                        positivo.</div>
+                </div>
+
+                <div class="pill">
+                    <label for="precioCompra" class="">Precio de Compra</label>
+                    <input id="precioCompra" class="text" formControlName="precioCompra">
+                </div>
+                <div *ngIf="agregarTipoForm.get('precioCompra')?.invalid && agregarTipoForm.get('precioCompra')?.touched"
+                    class="alert">
+                    <div *ngIf="agregarTipoForm.get('precioCompra')?.errors?.['required']">El precio de compra es
+                        obligatorio.
+                    </div>
+                    <div *ngIf="agregarTipoForm.get('precioCompra')?.errors?.['min']">El precio de compra debe ser un
+                        numero
+                        positivo.</div>
+                </div>
+
+                <div class="pill">
+                    <label for="precioVenta" class="">Precio de Venta</label>
+                    <input id="precioVenta" class="text" formControlName="precioVenta">
+                </div>
+                <div *ngIf="agregarTipoForm.get('precioVenta')?.invalid && agregarTipoForm.get('precioVenta')?.touched"
+                    class="alert">
+                    <div *ngIf="agregarTipoForm.get('precioVenta')?.errors?.['required']">El precio de venta es
+                        obligatorio.
+                    </div>
+                    <div *ngIf="agregarTipoForm.get('precioVenta')?.errors?.['min']">El precio de venta debe ser un
+                        numero
+                        positivo.</div>
+                </div>
+
+                <div class="pill">
+                    <label for="imagen" class="">Link al dibujo que lo representa</label>
+                    <input id="imagen" class="text" formControlName="imagen">
+                </div>
+                <div *ngIf="agregarTipoForm.get('imagen')?.invalid && agregarTipoForm.get('imagen')?.touched"
+                    class="alert">
+                    <div *ngIf="agregarTipoForm.get('imagen')?.errors?.['required']">La imagen es obligatoria.</div>
+                </div>
+
+                <button class="pill" type="submit">Agregar</button>
+            </form>
+
         </div>
-       <form [formGroup]= "agregarTipoForm" (submit) = "postTipoAnimal()"> 
-        <div class="pill">
-            <label for="nombre" class="">Nombre del animal</label>
-            <input id="nombre" class="text" formControlName="nombre">
-        </div>
-        <div class="pill">
-            <label for="cantidad" class="">Cantidad maxima en granja</label>
-            <input id="cantidad" class="text" formControlName="cantidad">
-        </div>
-        <div class="pill">
-            <label for="expectativa" class="">Expectativa de vida expresados en dias</label>
-            <input id="expectativa" class="text" formControlName="expectativa">
-        </div>
-        <div class="pill">
-            <label for="reproduccion" class="">Cada cuantos dias se reproduce?</label>
-            <input id="reproduccion" class="text" formControlName="reproduccion">
-        </div>
-        <div class="pill">
-            <label for="precioCompra" class="">Precio de Compra</label>
-            <input id="precioCompra" class="text" formControlName="precioCompra">
-        </div>
-        <div class="pill">
-            <label for="precioVenta" class="">Precio de Venta</label>
-            <input id="precioVenta" class="text" formControlName="precioVenta">
-        </div>
-        <div class="pill">
-            <label for="imagen" class="">Link al dibujo que lo representa</label>
-            <input id="imagen" class="text" formControlName="imagen">
-        </div> 
-        <button class= "pill" type="submit">Agregar</button> 
-    </form>
+
+
     </div>
-    <!-- <app-button text="Agregar" (btnClick)="postTipoAnimal()" type="submit"></app-button>  -->
-   
-</div>
 
 </div>

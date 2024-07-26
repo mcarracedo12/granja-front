@@ -1,45 +1,63 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 // import { ButtonComponent } from '../../components/button/button.component';
-import{FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { GranjaServiceService } from '../../services/granja-service.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-tiposF',
   standalone: true,
-  imports: [ ReactiveFormsModule],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './tipos.component.html',
   styleUrl: './tipos.component.css'
 })
-export class TiposForm {
+export class TiposForm implements OnInit {
 
-  agregarTipoForm = new FormGroup({
-    nombre: new FormControl('Ej. Vaca'),
-    cantidad: new FormControl(0),
-    expectativa: new FormControl(0),
-    reproduccion: new FormControl(0),
-    precioCompra: new FormControl(0.0),
-    precioVenta: new FormControl(0.0),
-    imagen: new FormControl('http...')
-  })
+  agregarTipoForm!: FormGroup; 
 
-  
-  constructor(private granjaService: GranjaServiceService ) { 
+
+  constructor(private fb: FormBuilder, private granjaService: GranjaServiceService) {
   }
 
 
-  postTipoAnimal(){
-    this.granjaService.postTipoAnimal(
-      this.agregarTipoForm.value.nombre ?? '',
-      this.agregarTipoForm.value.cantidad ?? 0,
-      this.agregarTipoForm.value.expectativa ?? 0,
-      this.agregarTipoForm.value.reproduccion ?? 0,
-      this.agregarTipoForm.value.precioCompra ?? 0,
-      this.agregarTipoForm.value.precioVenta ?? 0,
-      this.agregarTipoForm.value.imagen ?? ''
-    );
-   alert("PostTipoAnimal de TiposForm Component");
+  ngOnInit(): void {
+    this.agregarTipoForm = this.fb.group({
+      nombre: ['', [Validators.required, Validators.pattern(/^[a-zA-Z\s]*$/)]], // Solo letras y espacios
+      cantidad: [0, Validators.required], // Validar que no esté vacío
+      expectativa: [0, [Validators.required, Validators.min(1)]], // Números positivos
+      reproduccion: [0, [Validators.required, Validators.min(1)]], // Números positivos
+      precioCompra: [0, [Validators.required, Validators.min(0)]], // Números positivos
+      precioVenta: [0, [Validators.required, Validators.min(0)]], // Números positivos
+      imagen: ['Imagen', [Validators.required, Validators.pattern(/^[a-zA-Z\s]*$/)]] // Números positivos mayor que 0
+    });
   }
 
 
 
+  postTipoAnimal(): void {
+    if (this.agregarTipoForm.valid) {
+      console.log("Valid Form");
+
+      this.granjaService.postTipoAnimal(
+        this.agregarTipoForm.value.nombre,
+        this.agregarTipoForm.value.cantidad,
+        this.agregarTipoForm.value.expectativa,
+        this.agregarTipoForm.value.reproduccion,
+        this.agregarTipoForm.value.precioCompra,
+        this.agregarTipoForm.value.precioVenta,
+        this.agregarTipoForm.value.imagen
+      );
+      alert("PostTipoAnimal de TiposForm Component");
+    }
+    else {
+      console.log("Form is not valid");
+      alert("Hay valores en la compra que no cumplen los requerimientos");
+      // this.comprarForm.markAllAsTouched();
+
+    }
+  }
 }
+
+
+
+

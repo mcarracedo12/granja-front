@@ -99,12 +99,13 @@ export class GranjaServiceService {
           let precioVenta: number = 0;
           let precioCompra: number = tipo.precioCompra;
           let ventaId: number = 0;
-          let compraId: number = compraAgregada.id;
+          let compraId: number = 0;
           for (let i = 0; i < inputCantidadCompra; i++) {
             let animal: animal = { id, fechaIngresoAGranja, edadEnDiasAlIngresar, precioCompra, precioVenta, tipoId, compraId, ventaId };
             // Realizar la segunda solicitud HTTP para añadir los animales a la compra
             this.http.post(`${this.apiUrl}${this.granja_id}/tipos/${inputTipoCompra}/animales`, animal).subscribe(() => {
               console.log("Animal agregado");
+              // this.http.put(`${this.apiUrl}${this.granja_id}/compras/${compraId}/productos`, productosComprados, this.granja_id, compraAgregada.id){};
 
             }, error => {
               console.error("Error al agregar el animal", error);
