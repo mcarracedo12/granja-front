@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-// import { ButtonComponent } from '../../components/button/button.component';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { GranjaServiceService } from '../../services/granja-service.service';
 import { CommonModule } from '@angular/common';
 
@@ -22,13 +21,13 @@ export class TiposForm implements OnInit {
 
   ngOnInit(): void {
     this.agregarTipoForm = this.fb.group({
-      nombre: ['', [Validators.required, Validators.pattern(/^[a-zA-Z\s]*$/)]], // Solo letras y espacios
-      cantidad: [0, Validators.required], // Validar que no esté vacío
-      expectativa: [0, [Validators.required, Validators.min(1)]], // Números positivos
-      reproduccion: [0, [Validators.required, Validators.min(1)]], // Números positivos
-      precioCompra: [0, [Validators.required, Validators.min(0)]], // Números positivos
-      precioVenta: [0, [Validators.required, Validators.min(0)]], // Números positivos
-      imagen: ['Imagen', [Validators.required, Validators.pattern(/^[a-zA-Z\s]*$/)]] // Números positivos mayor que 0
+      nombre: ['', [Validators.required, Validators.pattern(/^[a-zA-Z\s]*$/)]], 
+      cantidad: [0, [Validators.required, Validators.min(1)]], 
+      expectativa: [0, [Validators.required, Validators.min(1)]], 
+      reproduccion: [0, [Validators.required, Validators.min(1)]], 
+      precioCompra: [0, [Validators.required, Validators.min(0)]], 
+      precioVenta: [0, [Validators.required, Validators.min(0)]], 
+      imagen: ['Imagen', [Validators.required, Validators.pattern(/^[a-zA-Z\s]*$/)]] 
     });
   }
 

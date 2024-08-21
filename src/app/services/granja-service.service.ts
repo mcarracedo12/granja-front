@@ -55,6 +55,8 @@ export class GranjaServiceService {
     return this.data;
   }
 
+ 
+
 
   obtenerTipo(id: number): Observable<tipo> {
     const tipo = this.http.get<tipo>(`${this.apiUrl}${this.granja_id}/tipos/${id}`);
@@ -168,8 +170,12 @@ export class GranjaServiceService {
 
 
 
-  eliminarTipo(tipo: tipo) {
-    return this.http.delete<tipo>(`${this.apiUrl}${this.granja_id}/tipos/${tipo.id}`).subscribe();
+  // eliminarTipo(tipo: tipo) {
+  //   return this.http.delete<tipo>(`${this.apiUrl}${this.granja_id}/tipos/${tipo.id}`).subscribe();
+  // }
+
+  eliminarTipo(tipo: tipo): Observable<any> {
+    return this.http.delete(`${this.apiUrl}${this.granja_id}/tipos/${tipo.id}`);
   }
 
   eliminarAnimal(animal: animal) {
@@ -191,5 +197,12 @@ export class GranjaServiceService {
     const year = fecha.getFullYear();
     return `${day}-${month}-${year}`;
   }
+
+  // private handleError<T>(operation = 'operation', result?: T) {
+  //   return (error: any): Observable<T> => {
+  //     console.error(error); // Logea el error en la consola
+  //     return of(result as T);
+  //   };
+  // }
 
 }

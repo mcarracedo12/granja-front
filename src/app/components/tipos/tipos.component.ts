@@ -6,6 +6,7 @@ import { tipo } from '../../tipo';
 import { GranjaServiceService } from '../../services/granja-service.service';
 import { animal } from '../../animal';
 import { CommonModule } from '@angular/common';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -19,27 +20,30 @@ export class TiposComponent implements OnInit {
   @Input() tipo: any;
   @Output() animales: animal[] = [];
   animal: any;
+  subscription! : Subscription;
+  tipos: tipo[] = [];
+  // @Input() tipo: Tipo;
   constructor(private granjaService: GranjaServiceService) { }
 
   ngOnInit(): void {
-    this.granjaService.obtenerTipos().subscribe(data => {
+    this.subscription =  this.granjaService.obtenerTipos().subscribe(data => {
     });
     this.animales = this.tipo.animales;
-
-    // for (let animal of this.animales) {
-    //   console.log(animal.id);
-    //   console.log(animal);
-    // } // Imprime bien en consola
-
   }
 
 
+  ngOnDestroy(): void{
+    this.subscription.unsubscribe();
+  }
  
 
-  eliminarTipo() {
+  eliminarTipo(): void {
     alert("EliminarTipo");
     console.log(this);
-    this.granjaService.eliminarTipo(this.tipo);
+    // this.granjaService.eliminarTipo(this.tipo);
+    this.granjaService.eliminarTipo(this.tipo).subscribe(() => {
+      this.tipos = this.tipos.filter(t => t.id !== this.tipo.id);
+    });
   }
 
 
